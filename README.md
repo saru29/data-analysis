@@ -16,7 +16,7 @@ and incentive participation through gaming and competition
 # What is in this Repository?
 
 In this GitHub repostiory you can access a wide variety of documents and notebooks that let you explore
-the work that was undertaken by the Data Science team in Trimester 1 2022. 
+the work that was undertaken by the Data Science team in Trimester 1 & 2 - 2022. 
 
 The Repository contains:
 	<li> Algorithm Prototype Development
