@@ -22,8 +22,7 @@
       "name": "distance",
       "mode": "NULLABLE",
       "type": "STRING",
-      "description": "m",
-      "fields": []
+      "description": "km"
     },
     {
       "name": "enhanced_altitude",
