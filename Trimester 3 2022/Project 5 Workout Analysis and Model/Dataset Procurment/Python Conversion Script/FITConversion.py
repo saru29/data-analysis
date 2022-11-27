@@ -34,6 +34,10 @@ allowed_fields = [
     "descriptor",
     "product_name",
     "serial_number",
+    "age",
+    "gender",
+    "weight",
+    "FTP",
     "sessionID",
     "userID"
 ]
