@@ -132,26 +132,17 @@
       "fields": []
     },
     {
-      "name": "sessionID",
-      "mode": "NULLABLE",
-      "type": "STRING",
-      "fields": []
-    }
-    ,
-    {
       "name": "userID",
       "mode": "NULLABLE",
       "type": "STRING",
       "fields": []
-    }
-    ,
+    },
     {
       "name": "age",
       "mode": "NULLABLE",
       "type": "STRING",
       "fields": []
-    }
-    ,
+    },
     {
       "name": "gender",
       "mode": "NULLABLE",

@@ -31,13 +31,37 @@ SELECT
   sessionID,
   -- TO DO
   CASE
-    WHEN Timestamp IS NOT NULL THEN "UXXXXXXXX" -- USER ID, MANUALLY SET
+    WHEN Timestamp IS NOT NULL THEN "U1000000" -- USER ID, MANUALLY SET
   ELSE
   NULL
 END
-  AS userID
+  AS userID,
+  CASE
+   WHEN Timestamp IS NOT NULL THEN 33 -- AGE, MANUALLY SET
+  ELSE
+  NULL
+END
+  AS age,
+  CASE
+    WHEN Timestamp IS NOT NULL THEN "MALE" -- GENDER, MANUALLY SET
+  ELSE
+  NULL
+END
+  AS gender,
+  CASE
+    WHEN Timestamp IS NOT NULL THEN 80 -- WEIGHT, MANUALLY SET
+  ELSE
+  NULL
+END
+  AS weight,
+  CASE
+    WHEN Timestamp IS NOT NULL THEN 301 -- FTP, MANUALLY SET
+  ELSE
+  NULL
+END
+  AS FTP,
 FROM
-  `redbackoperationsdataai.Fitness_Data.fitness-activity-XXXX` -- UPDATE TO CORREC TABLE NMAE
+  `redbackoperationsdataai.Fitness_Data.fitness-activity-user1` -- UPDATE TO CORREC TABLE NMAE
 WHERE
   position_lat IS NOT NULL -- removes not workout related data
   AND distance IS NOT NULL
