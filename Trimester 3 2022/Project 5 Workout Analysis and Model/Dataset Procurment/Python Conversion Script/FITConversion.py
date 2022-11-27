@@ -11,6 +11,7 @@ import glob
 import pandas as pd
 import re
 
+x = 0
 
 allowed_fields = [
     "timestamp",
@@ -38,6 +39,7 @@ allowed_fields = [
     "gender",
     "weight",
     "FTP",
+    "wperkg",
     "sessionID",
     "userID"
 ]
@@ -46,7 +48,7 @@ required_fields = ["timestamp"]
 UTC = pytz.UTC
 AEST = pytz.timezone("Australia/Melbourne")
 
-def renameFiles():
+def renameFiles(x):
     print("Renaming Started")
     #Key folder name
     folder = "Exports"
@@ -64,21 +66,22 @@ def renameFiles():
     files = os.listdir()
     file_extension ="";
     #print(files)
-    x = 0
     for index, file in enumerate(files):
-        blocks = re.split("\W+", file)
-        file_extension = blocks[(len(blocks)-1)]
-        #print(file_extension)
-        if file_extension != "py":
-            tempfilename = sep.join(blocks[7:9])
-            tempfilename = leadName + tempfilename
-            #print(tempfilename)
-            os.rename(os.path.join(path, file), os.path.join(path, ''.join([str(tempfilename), '.fit'])))
+        # blocks = re.split("\W+", file)
+        # file_extension = blocks[(len(blocks)-1)]
+        # #print(file_extension)
+        # if file_extension != "py":
+        #     tempfilename = sep.join(blocks[7:9])
+        #     tempfilename = leadName + tempfilename
+        #     #print(tempfilename)
+        #     os.rename(os.path.join(path, file), os.path.join(path, ''.join([str(tempfilename), '.fit'])))
             x+=1
     print(x, " files renamed")
+    return x
 
-def main():
+def main(x):
     print("Conversion started:")
+    y=0
     files = os.listdir()
     fit_files = [file for file in files if file[-4:].lower() == ".fit"]
     for file in fit_files:
@@ -91,9 +94,15 @@ def main():
         )
         #print("converting %s" % file)
         #print(fitfile)
-        write_fitfile_to_csv(fitfile, new_filename)
-        print("File Converted")
-    print("finished conversions")
+        failedFiles = 0;
+        try:
+            write_fitfile_to_csv(fitfile, new_filename)
+        except:
+            print("Exception thrown!")
+            failedFiles+=1
+        y+=1
+        print("File Converted, ", round((y/x)*100,2),"%")
+    print("finished conversions, failed conversions: ", failedFiles)
 
 def write_fitfile_to_csv(fitfile, output_file="test_output.csv"):
     messages = fitfile.messages
@@ -145,9 +154,10 @@ def combine_csvfiles():
     combined_csv.to_csv( "combined_csv.csv", index=False, encoding='utf-8-sig')
 
 if __name__ == "__main__":
-    renameFiles()
-    main()
+    x = renameFiles(x)
+    main(x)
     combine_csvfiles()
+    print("OPERATIONS COMPLETE")
 
 ##-----------------------------------------------------------------------------------------------------
 ##-----------------------------------------------------------------------------------------------------
