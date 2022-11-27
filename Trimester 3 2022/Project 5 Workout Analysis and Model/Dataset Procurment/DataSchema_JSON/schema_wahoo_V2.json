@@ -137,4 +137,37 @@
       "type": "STRING",
       "fields": []
     }
+    ,
+    {
+      "name": "userID",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    }
+    ,
+    {
+      "name": "age",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    }
+    ,
+    {
+      "name": "gender",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    },
+    {
+      "name": "weight",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    },
+    {
+      "name": "FTP",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    }
   ]

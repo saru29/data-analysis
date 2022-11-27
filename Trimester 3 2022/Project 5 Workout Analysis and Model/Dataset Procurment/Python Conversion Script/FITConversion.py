@@ -1,7 +1,6 @@
 # MTELLEY DEAKIN
 # SIT374
 # DATA SCIENCE AND ANALYSIS
-# DRAFT V1 - REFERENCES NOT CORRECTLY DOCUMENTED YET
 
 import csv
 import os
@@ -35,7 +34,8 @@ allowed_fields = [
     "descriptor",
     "product_name",
     "serial_number",
-    "sessionID"
+    "sessionID",
+    "userID"
 ]
 required_fields = ["timestamp"]
 
@@ -43,6 +43,7 @@ UTC = pytz.UTC
 AEST = pytz.timezone("Australia/Melbourne")
 
 def renameFiles():
+    print("Renaming Started")
     #Key folder name
     folder = "Exports"
     #Seperator
@@ -59,7 +60,7 @@ def renameFiles():
     files = os.listdir()
     file_extension ="";
     #print(files)
-
+    x = 0
     for index, file in enumerate(files):
         blocks = re.split("\W+", file)
         file_extension = blocks[(len(blocks)-1)]
@@ -69,9 +70,11 @@ def renameFiles():
             tempfilename = leadName + tempfilename
             #print(tempfilename)
             os.rename(os.path.join(path, file), os.path.join(path, ''.join([str(tempfilename), '.fit'])))
-
+            x+=1
+    print(x, " files renamed")
 
 def main():
+    print("Conversion started:")
     files = os.listdir()
     fit_files = [file for file in files if file[-4:].lower() == ".fit"]
     for file in fit_files:
@@ -82,13 +85,11 @@ def main():
         fitfile = fitparse.FitFile(
             file, data_processor=fitparse.StandardUnitsDataProcessor()
         )
-
-        print("converting %s" % file)
-        print(fitfile)
+        #print("converting %s" % file)
+        #print(fitfile)
         write_fitfile_to_csv(fitfile, new_filename)
+        print("File Converted")
     print("finished conversions")
-
-sessoinID = 0
 
 def write_fitfile_to_csv(fitfile, output_file="test_output.csv"):
     messages = fitfile.messages
@@ -117,18 +118,19 @@ def write_fitfile_to_csv(fitfile, output_file="test_output.csv"):
     with open(output_file, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(allowed_fields)
-        print(allowed_fields)
+        #print(allowed_fields)
         for entry in data:
             line_file = []
             for k in allowed_fields:
                 data_var = str(entry.get(k, ""))
-                print(entry," ", k," " ,data_var)
+                #print(entry," ", k," " ,data_var)
                 line_file.append(data_var)
-            print(line_file)
+            #print(line_file)
             writer.writerow(line_file)
-    print("wrote %s" % output_file)
+    #print("wrote %s" % output_file)
 
 def combine_csvfiles():
+    print("Combining Files")
     extension = 'csv'
     all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
     #print(all_filenames)
