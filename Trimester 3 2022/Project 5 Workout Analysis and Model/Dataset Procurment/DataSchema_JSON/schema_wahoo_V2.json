@@ -132,12 +132,6 @@
       "fields": []
     },
     {
-      "name": "userID",
-      "mode": "NULLABLE",
-      "type": "STRING",
-      "fields": []
-    },
-    {
       "name": "age",
       "mode": "NULLABLE",
       "type": "STRING",
@@ -157,6 +151,23 @@
     },
     {
       "name": "FTP",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    },
+    {
+      "name": "wperkg",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    },
+    {
+      "name": "sessionID",
+      "mode": "NULLABLE",
+      "type": "STRING",
+      "fields": []
+    },    {
+      "name": "userID",
       "mode": "NULLABLE",
       "type": "STRING",
       "fields": []
