@@ -8,6 +8,10 @@ Once combined machine learning methods are applied in order to predict VO2.
 
 ## Results
 
+X Axis - Standardised Time
+Y Axis - Standardised VO2
+
+
 ![alt text](ten_most_diffcult_time_series.png)
 
 ## What's already been tested:
