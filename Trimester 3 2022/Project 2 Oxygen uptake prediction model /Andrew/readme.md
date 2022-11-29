@@ -1,8 +1,14 @@
 # Oxygen Uptake - Predicting VO2 using Heart Rate & Time
 
-The following project takes several data sources combines them and applies machine learning methods in order to predict VO2.
+The following project takes several data sources combines them.
+
+Once combined machine learning methods are applied in order to predict VO2.
 
 ![alt text](VO2_workflow.png)
+
+## Results
+
+![alt text](ten_most_diffcult_time_series.png)
 
 ## Orignal Data Sources
 Universtiy oof Costa Rica Dataset:
