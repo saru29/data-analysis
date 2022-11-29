@@ -6,6 +6,7 @@ Once combined machine learning methods are applied in order to predict VO2.
 
 ![alt text](VO2_workflow.png)
 
+
 ## Results
 
 ![alt text](ten_most_diffcult_time_series.png)
