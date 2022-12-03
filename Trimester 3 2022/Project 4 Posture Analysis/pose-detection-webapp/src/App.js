@@ -1,13 +1,20 @@
-import logo from './logo.svg'
+import CssBaseline from '@mui/material/CssBaseline'
+import Container from '@mui/material/Container'
+
+import CanvasWrapper from './components/CanvasWrapper'
+import NavBar from './components/NavBar'
+
+// import logo from './logo.svg'
 import './App.css'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        This is a pose detection web app!
-      </header>
+      <CssBaseline />
+      <NavBar />
+      <Container maxWidth="100%">
+        <CanvasWrapper />
+      </Container>
     </div>
   )
 }
