@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
+
+import Canvas from './Canvas'
 import Webcam from './Webcam'
 import JsonViewer from './JsonViewer'
 
-const videoConstraints = {
-  width: 1280,
-  height: 720,
-  facingMode: 'user',
-  frameRate: { ideal: 30, max: 30 },
-}
+import { videoConstraints } from '../utils/videoHelper'
 
 function CanvasWrapper() {
   const [camOn, setCamOn] = useState(false)
@@ -25,19 +22,27 @@ function CanvasWrapper() {
   return (
     <Grid container spacing={0} sx={{ justifyContent: 'space-around', mt: 5 }}>
       <Grid item={true}>
-        <Webcam videoConstraints={videoConstraints} camOn={camOn} setPose={setPose} />
+        <Canvas camOn={camOn} />
+        <Webcam camOn={camOn} setPose={setPose} />
         <Grid
           item={true}
           md={12}
           sx={{ width: videoConstraints.width, height: videoConstraints.height }}
         >
-          <Button variant="contained" size="small" sx={{ mt: 2 }} onClick={() => setCamOn(!camOn)}>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ mt: 2 }}
+            onClick={() => {
+              setCamOn(!camOn)
+            }}
+          >
             webcam {camOn ? 'off' : 'on'}
           </Button>
         </Grid>
       </Grid>
       <Grid item={true}>
-        <JsonViewer pose={pose} videoConstraints={videoConstraints} />
+        <JsonViewer pose={pose} />
       </Grid>
     </Grid>
   )

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useTransition } from 'react'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import Webcam from 'react-webcam'
@@ -6,7 +6,16 @@ import Webcam from 'react-webcam'
 import * as poseDetection from '@tensorflow-models/pose-detection'
 import '@tensorflow/tfjs-backend-webgl'
 
-let detector, model, video
+import {
+  videoConstraints,
+  clearCanvas,
+  drawKeypoints,
+  drawSkeleton,
+  sendNewPoseRate,
+} from '../utils/videoHelper'
+
+let detector, model, video, canvas, canvasContext
+let frameCount = 0
 
 const createDetector = async function () {
   model = poseDetection.SupportedModels.BlazePose
@@ -18,38 +27,55 @@ const createDetector = async function () {
   detector = await poseDetection.createDetector(model, detectorConfig)
 }
 
-function WebcamCapture({ videoConstraints, camOn, setPose }) {
+function WebcamCapture({ camOn, setPose }) {
+  const [, startTransition] = useTransition()
+
   const initiateVideo = () => {
     video = document.getElementsByTagName('video')[0]
+    canvas = document.getElementById('canvas')
 
     video.onloadedmetadata = () => {
       const videoWidth = video.videoWidth
       const videoHeight = video.videoHeight
+      canvasContext = canvas.getContext('2d')
 
-      video.width = videoWidth
-      video.height = videoHeight
-      // canvas.width = videoWidth
-      // canvas.height = videoHeight
-
-      // Because the image from camera is mirrored, need to flip horizontally.
-      // ctx.translate(videoWidth, 0)
-      // ctx.scale(-1, 1)
+      canvas.width = videoWidth
+      canvas.height = videoHeight
+      canvasContext.translate(videoWidth, 0)
+      canvasContext.scale(-1, 1)
     }
 
-    // Initially register the callback to be notified about the first frame.
+    // initially register the callback to be notified about the first frame.
     video.requestVideoFrameCallback(predictPoses)
   }
 
   const predictPoses = async function (now, metadata) {
     if (detector != null) {
       try {
+        frameCount++
         const poses = await detector.estimatePoses(video, {
           flipHorizontal: false,
         })
 
         if (poses?.length > 0) {
           console.log('predicted poses data:', poses[0])
-          setPose(poses[0])
+
+          clearCanvas()
+          for (const pose of poses) {
+            if (pose.keypoints !== null && typeof pose.keypoints == 'object') {
+              // setPose(poses[0])
+              drawSkeleton(poseDetection, model, canvasContext, pose.keypoints)
+              drawKeypoints(canvasContext, pose.keypoints)
+            }
+          }
+
+          if (frameCount >= sendNewPoseRate) {
+            // start another transition to avoid for delaying the canvas re-draw
+            startTransition(() => {
+              setPose(poses[0])
+              frameCount = 0
+            })
+          }
         }
       } catch (error) {
         // detector.dispose()
@@ -57,18 +83,6 @@ function WebcamCapture({ videoConstraints, camOn, setPose }) {
         console.log(error)
       }
     }
-    // ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight)
-
-    // if (poses && poses.length > 0) {
-    //   for (const pose of poses) {
-    //     if (pose.keypoints != null) {
-    //       drawKeypoints(pose.keypoints)
-    //       drawSkeleton(pose.keypoints)
-    //     }
-    //   }
-    // }
-
-    console.log(`[${now}]: current video frame data is`, metadata)
 
     // Re-register the callback for the next frame
     video.requestVideoFrameCallback(predictPoses)
@@ -102,6 +116,7 @@ function WebcamCapture({ videoConstraints, camOn, setPose }) {
 
       {camOn && (
         <Webcam
+          mirrored={true}
           audio={false}
           width={videoConstraints.width}
           height={videoConstraints.height}
