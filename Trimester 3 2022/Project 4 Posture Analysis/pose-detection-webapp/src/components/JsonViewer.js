@@ -1,6 +1,6 @@
 import React from 'react'
 import { JsonViewer } from '@textea/json-viewer'
-import { videoConstraints } from '../utils/videoHelper'
+import { videoConstraints } from '../lib/videoHelper'
 
 function JsonViewerWrapper({ pose }) {
   return (

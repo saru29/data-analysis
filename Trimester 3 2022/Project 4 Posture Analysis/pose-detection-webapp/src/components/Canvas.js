@@ -1,5 +1,5 @@
 import React from 'react'
-import { videoConstraints } from '../utils/videoHelper'
+import { videoConstraints } from '../lib/videoHelper'
 
 function Canvas({ camOn }) {
   return (
