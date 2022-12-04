@@ -11,8 +11,8 @@ import {
   clearCanvas,
   drawKeypoints,
   drawSkeleton,
-  sendNewPoseRate,
-} from '../utils/videoHelper'
+  sendKeypointsRate,
+} from '../lib/videoHelper'
 
 let detector, model, video, canvas, canvasContext
 let frameCount = 0
@@ -27,7 +27,7 @@ const createDetector = async function () {
   detector = await poseDetection.createDetector(model, detectorConfig)
 }
 
-function WebcamCapture({ camOn, setPose }) {
+function WebcamCapture({ camOn, setPose, publishPose }) {
   const [, startTransition] = useTransition()
 
   const initiateVideo = () => {
@@ -69,9 +69,10 @@ function WebcamCapture({ camOn, setPose }) {
             }
           }
 
-          if (frameCount >= sendNewPoseRate) {
+          if (frameCount >= sendKeypointsRate) {
             // start another transition to avoid for delaying the canvas re-draw
             startTransition(() => {
+              publishPose(poses[0]?.keypoints3D || [])
               setPose(poses[0])
               frameCount = 0
             })

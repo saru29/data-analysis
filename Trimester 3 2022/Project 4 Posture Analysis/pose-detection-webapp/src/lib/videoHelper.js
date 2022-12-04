@@ -8,7 +8,7 @@ const videoConstraints = {
 }
 
 // send a new Pose data to MQTT every 30/2 frames, for instance
-const sendNewPoseRate = videoConstraints.frameRate.max / 2
+const sendKeypointsRate = videoConstraints.frameRate.max / 2
 
 const clearCanvas = () => {
   const canvas = document.getElementById('canvas')
@@ -63,5 +63,5 @@ export {
   clearCanvas,
   drawKeypoints,
   drawSkeleton,
-  sendNewPoseRate,
+  sendKeypointsRate,
 }
