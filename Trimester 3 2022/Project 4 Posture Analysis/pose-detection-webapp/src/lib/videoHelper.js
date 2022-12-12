@@ -1,8 +1,8 @@
 const scoreThreshold = 0.6
 
 const videoConstraints = {
-  width: 1280,
-  height: 720,
+  width: 800,
+  height: 500,
   facingMode: 'user',
   frameRate: { ideal: 30, max: 30 },
 }

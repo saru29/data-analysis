@@ -7,7 +7,10 @@ function JsonViewerWrapper({ pose }) {
     <JsonViewer
       value={pose}
       theme="dark"
-      style={{ width: '80vh', height: videoConstraints.height, overflow: 'auto' }}
+      style={{
+        height: videoConstraints.height,
+        overflow: 'auto',
+      }}
     />
   )
 }

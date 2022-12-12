@@ -69,19 +69,15 @@ function CanvasWrapper() {
   }
 
   return (
-    <Grid container spacing={0} sx={{ justifyContent: 'space-around', mt: 5 }}>
-      <Grid item={true}>
+    <Grid container spacing={0} sx={{ justifyContent: 'space-between', mt: 5 }}>
+      <Grid item={true} md={8} xs={12}>
         <Canvas camOn={camOn} />
         <Webcam camOn={camOn} setPose={setPose} publishPose={publishPose} />
-        <Grid
-          item={true}
-          md={12}
-          sx={{ width: videoConstraints.width, height: videoConstraints.height }}
-        >
+        <Grid item={true} sx={{ width: videoConstraints.width, display: 'inline-block' }}>
           <Button
             variant="contained"
             size="small"
-            sx={{ mt: 2 }}
+            sx={{ mt: 2, mb: 2 }}
             onClick={() => {
               setCamOn(!camOn)
 
@@ -92,7 +88,7 @@ function CanvasWrapper() {
           </Button>
         </Grid>
       </Grid>
-      <Grid item={true}>
+      <Grid item={true} md={4} xs={12}>
         <JsonViewer pose={pose} />
         <Grid item={true} md={12}>
           <KeypointsSender

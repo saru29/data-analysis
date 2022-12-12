@@ -98,7 +98,14 @@ function WebcamCapture({ camOn, setPose, publishPose }) {
   }, [])
 
   return (
-    <Paper elevation={3} sx={{ width: videoConstraints.width, height: videoConstraints.height }}>
+    <Paper
+      elevation={3}
+      sx={{
+        width: videoConstraints.width,
+        height: videoConstraints.height,
+        display: 'inline-block',
+      }}
+    >
       {!camOn && (
         <Typography
           variant="h6"
