@@ -8,7 +8,7 @@ function Canvas({ camOn }) {
         id="canvas"
         style={{
           position: 'absolute',
-          display: 'block',
+          display: 'inline-block',
           zIndex: '100',
           width: videoConstraints.width,
           height: videoConstraints.height,

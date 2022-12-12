@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Pose Detection Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a ReactJS web application for pose detection, estimation and tracking using [BlazePose](https://blog.tensorflow.org/2021/05/high-fidelity-pose-tracking-with-mediapipe-blazepose-and-tfjs.html) pre-trained ML model.
 
-In the project directory, you can run:
+The application enables the external webcam via a modern browser, and captures the human body movements in real time and displays the key points actively on a canvas that is on the top of the video stream.
 
-### `npm start`
+The application also supports for sending the real time 3D key points info as JSON objects to a topic via MQTT protocol. The published key points data will be further utilised in the 3D cycling game to timely indicate a competitor cyclist's real pose movements.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How to Use It Remotely
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- This webapp has been deployed to the company owned GCP account at http://34.129.10.237:3003 (username: `admin`, password: `redback`).
 
-### `npm test`
+- The app is exposed via a public static IP address only, which is not configured with HTTPS connection. Due to thee security restriction from modern browsers, to enable the webcam in a browser, however, a request connection has to be from HTTPS or localhost. To by-pass the limitation, please make sure you've added the remote IP address (`http://34.129.10.237:3003`) with the correct port number as a "secured origin connection" in your browser settings (e.g. `chrome://flags/#unsafely-treat-insecure-origin-as-secure` in Chrome).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to Run It Locally
 
-### `npm run build`
+1. In the root folder, run `npm install` to install all dependent packages.
+2. Copy `.env.example` to `.env` and provide your own key values as needed.
+3. Run `npm start` to start the app.
+4. Go to `http://localhost:3003` in a browser to test out the features.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How to Deploy it to GCP
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The webapp is containerized using Docker. A Docker config file for this app can be found in `.Dockerfile` file.
+- For more details about how to build a new docker image, push to GCP, pull the new image in VM instances to deploy the latest app version, please refer to this deployment instruction guide: https://github.com/redbackoperations/iot/blob/main/docs/iot-web-services-deploy-guide.md    
