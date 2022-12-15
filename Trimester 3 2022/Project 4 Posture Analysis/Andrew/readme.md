@@ -1,10 +1,10 @@
-# Oxygen Uptake - Predicting VO2 using Heart Rate & Time
+# Posture Analysis
 
 ## Guide
 
 Click Me !!!
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/DHPCkAqcQ9A/0.jpg)](http://www.youtube.com/watch?v=DHPCkAqcQ9A "Oxygen Consumption Guide")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/cebjjlkxeOA/0.jpg)](http://www.youtube.com/watch?v=cebjjlkxeOA "Oxygen Consumption Guide")
 
 ## Workflow
 
