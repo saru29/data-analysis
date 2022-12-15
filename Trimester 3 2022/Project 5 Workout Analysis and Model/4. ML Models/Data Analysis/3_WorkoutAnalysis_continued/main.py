@@ -17,7 +17,7 @@ if runanalysis:
     # ELSE - no csv file, connect to bigquery and run script.
     # Note: A basic CSV is provided.
     file_exists_1 = os.path.exists('data.csv')
-    file_exists_2 = os.path.exists('redbackoperationsdataai-f939ef3426ea.json')
+    file_exists_2 = os.path.exists('redbackoperationsdataai-XXXXXXXXXXXXX.json')
     runScript = 0
     if file_exists_1 and file_exists_2:
         userAns = int(input(
@@ -25,7 +25,7 @@ if runanalysis:
         if userAns == 1:
             # Set up connection with BigQuery Project tp retrive data
             credentials = service_account.Credentials.from_service_account_file(
-                'redbackoperationsdataai-f939ef3426ea.json')
+                'redbackoperationsdataai-XXXXXXXXXXXXXXXX.json')
             project_id = 'redbackoperationsdataai'
             client = bigquery.Client(credentials=credentials, project=project_id)
             print("Client creating using", project_id, "project: {}".format(client.project))
