@@ -8,38 +8,27 @@ Click Me !!!
 
 ## Workflow
 
-The following project takes several data sources combines them.
+The following project accepts several different types of data sources.
 
-Once combined machine learning methods are applied in order to predict VO2.
+Regardless of data source, a pretrained model is applied to determine/extract pose landmark coordinates.
 
-![alt text](VO2_workflow.png)
+Specific landmarks are then used to determine certains types of posture during cycling.
+
+![alt text](posture_analysis_workflow.png)
 
 ## Results
 
-X Axis - Standardised Time
-Y Axis - Standardised VO2
+Normal Position
 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/bwq7a58RRRQ/0.jpg)](http://www.youtube.com/watch?v=bwq7a58RRRQ "Normal Pose")
 
-![alt text](ten_most_diffcult_time_series.png)
+Aero Position
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/o7ViRmn7PLI/0.jpg)](http://www.youtube.com/watch?v=o7ViRmn7PLI "Aero Pose")
 
 ## What's already been tested:
-  - Min-Max Scaling
-    - Decrease in performance
-  - Robust Scaling
-    - Decrease in performance
-  - Additional Vairables
-    - Hard to obtain or impractical
-  - Long Short-Term Memory Model (LSTM)
-    - Decrease in performance
-    - Lack of model understanding
-    - Inflexible to variations in time
-  - XGBoost
-    - Decrease in performance
-  - Various Other Boosting Methods
-    - Decrease in performance
-  - Temporal Fusion Transformer (TFT)
-    - Decrease in performance
-    - Requires large amounts of computing resources
+  - Mediapipe
+    - Model Complexity (0,1 & 2)
 
 ## Orignal Data Sources
 
