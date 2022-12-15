@@ -21,7 +21,7 @@ def plotshow(t):
     plt.close()
 
 # Set up connection with BigQuery Project tp retrive data
-credentials = service_account.Credentials.from_service_account_file('redbackoperationsXXXXXX-XXXXXXXXXXXX')
+credentials = service_account.Credentials.from_service_account_file('redbackoperationsXXXXXXXX-XXXXXXXXXXXX')
 project_id = 'XXXXXXXXXXXXX'
 client = bigquery.Client(credentials=credentials, project=project_id)
 print("Client creating using default project: {}".format(client.project))
