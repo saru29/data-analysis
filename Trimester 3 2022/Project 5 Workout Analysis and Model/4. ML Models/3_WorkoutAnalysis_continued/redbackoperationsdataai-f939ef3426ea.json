@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "redbackoperationsdataai",
+  "private_key_id": "f939ef3426ea4cbffce61f232bc38f72d0b8571f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC0bR8/ixclOqIA\n0K6gJrPHeY+Ypj6cdNYmcdUsMHrySO4rITk6ruB+s5u3JYYQ3EdGu4PSDNyaZ/JY\ncnhmHsHipTfX72+Czn31DaZipyjftPX/SNZL0YHOewKnsk5i9pihe8NWucLSednF\nf7O3gn9M1NEefkyxat5AKUEGY6FUqbvQ2fdlKMctrf+j9qzshybV6Q89scoWb0bd\nN+YVkd8YvyVX0eh4RQYNVs+sDRK2WDQL1zNVUCeYL12xLKcJakwrL9W6s+lVXiVB\n8z9jfGaBvZ3Xj8ixz5FVxi3rUVU+ASR1YOr0o9X3wHTWMEIbNdpnsz/K1sxdcfd6\nG7U5KhlXAgMBAAECggEAVy9NxMJc7lf9VaCBaZEaGX9ztKNMqQTKQKyMAnzwxCga\nsous4F8FyyPWUHNY68fNx2+wHK2rYg9tq3CxHkOpk/AbYoRoYZCPi/1LE+vLlAIZ\nRwE20E9ORuzpFQjT2P1pNssb0soTyuonoch6Guh7xDAoVvBX9fl6qQ1mRwSYvlQw\nrUIYv+rkGN0HNM1V1bhqQBOvuZIjCsOarymP5talZah+XB8xytdTk9e2Sc90AJjb\nWB1C+MWmEYmtpt94vzKt9gPzxAcV4lSugdn/shz1W730Cg6qQxRRteyd/knPLptT\nU5HZeUi3iXu1R8IQSm1Z9Y3WD4fNmhlazkM5l0UKpQKBgQDgqUN6qko3y9B/hvZd\ncGlz/yKHDuBdVfy8dOwceK0xIAig3wwCMZN+OGBschCGNmtBq6R/dH+/vBT/NJjj\n64IAC/UIs7tLZ7HS3Qand19J7hBSNB/O/HdFDAokKHtGAfLu7PB2d6/10yf04mgB\nTXTPE3FA1AHPHqw7J9VvzpC++wKBgQDNmDZeD2RQRkU23BrGiq9X9zQ2uqCkfnZz\nFnNAeh3bp4M89DckLVeG4Gs3gms/xcACfa7CVOZSb7TDU60vQG38KPq5C1yhMu8h\nmbomh9/CorGqn1AjmbOvuFqV0h20ucQGcBwd81dvtm/CeUIaYLL+4YTQs7a6B5jg\nK/1ZUZEQVQKBgG7CRChXiBuV+gbFTPSoFPVBFY6sQOUDHYTzx+wJeqk7d8WH8W2r\nb2HM/Yy5d3gToDFSI9lKYCjw2xEupynG0+KeAoH1yiLUzpB8s2kgqvPR0G4WkJAF\nW+/Ijb9hzdSn5VLxsWNWgoOZRJuwe0IZI7trhGxHmVS5dIP9kXZ7ylS9AoGASNvN\nQI4h1ZThiGx+DKgvNXREi7Sdo02xul1VYJ8mH6aAisRdGjP7VbAILvbH/SSeRAO4\nP+QIb2Ro4eOwdxNVJsx69cLCA9piBj1NS8RRFs/DOJ0WsFcS543khD2fC2Hdxw5J\n2I9ZCBzWBEwmkeR86niPMcrOUaTJl3/fW5zdVLUCgYAW3xcmZUD5lzwYNieGfahE\nLCHXstBtSbIshn1eIAYKYC4SO4DwACNdeFpiEuuMY+ANrXctqk5fQbIjjf9HbE0P\nzU/5nzS3hq41OAT774+fHXcl2aEvX1PRWwJ6PhLN/fsZUWdyUTY113LECr3NDnH1\nKoQ5NaNqhHzHBj/g7YT+ig==\n-----END PRIVATE KEY-----\n",
+  "client_email": "he-276@redbackoperationsdataai.iam.gserviceaccount.com",
+  "client_id": "110693126254590835670",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/he-276%40redbackoperationsdataai.iam.gserviceaccount.com"
+}
