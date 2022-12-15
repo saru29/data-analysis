@@ -20,7 +20,7 @@ from pandas.io import gbq  # to communicate with Google BigQuery
 ##################
 
 # Set up connection with BigQuery Project tp retrive data
-credentials = service_account.Credentials.from_service_account_file('XXXXXXXXXXXXXXXXXXXXXXXX.json')
+credentials = service_account.Credentials.from_service_account_file('XXXXXXXXXXXXXXXXXXXXXXXXX.json')
 project_id = 'XXXXXXXXXXXXXXXXXX'
 client = bigquery.Client(credentials=credentials, project=project_id)
 print("Client creating using default project: {}".format(client.project))
