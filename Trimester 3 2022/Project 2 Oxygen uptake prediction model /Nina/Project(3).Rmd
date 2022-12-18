@@ -1,0 +1,615 @@
+---
+title: "Prediction of oxygen uptake dynamics by machine learning analysis of wearable sensors during activities of daily living"
+subtitle: ""
+author: ""
+date: ""
+output:
+  pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = TRUE,
+                      message = FALSE, 
+                      warning = FALSE,
+                      comment = NA,
+                      cache = TRUE)
+```
+
+# Load Packages
+
+Load some packages we will use.
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(ggridges)
+library(tidytext)
+library(corrplot)
+library(doMC)
+library(caret)
+```
+
+# Import Data
+
+Import "Kaggle_Data.csv" and "O2_data.csv" into R.
+
+```{r}
+data = read_csv('data/Kaggle_Data.csv')
+O2_data_user1 = read_xlsx('data/O2_data.xlsx',sheet = 1)
+O2_data_user3 = read_xlsx('data/O2_data.xlsx',sheet = 2)
+```
+
+# Exploratory Data Analysis
+
+Visualize the features in the data.
+
+```{r}
+data %>%
+  pivot_longer(cols = Power:RF,
+               names_to = 'variable',
+               values_to = 'value') %>%
+  ggplot(aes(x = time,
+             y = value,
+             group = Participant,
+             color = as.character(Participant))) +
+  geom_line() +
+  scale_color_brewer(palette = 'Set1') +
+  facet_grid(variable~Method,scales = 'free') +
+  labs(x = 'Time',
+       y = 'Feature Values',
+       color = 'Participant',
+       title = 'Visualization of Features') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Visualize the distribution of `Oxygen`.
+
+```{r}
+data %>% 
+  ggplot(aes(x = Oxygen,y = as.character(Participant),fill = ..x..)) +
+  geom_density_ridges_gradient() +
+  scale_fill_viridis_c(option = 'A') +
+  facet_wrap(~Method,scales = 'free') +
+  labs(y = 'Participant',
+       title = 'Distribution of Oxygen',
+       subtitle = 'by Method and Participant') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        legend.position = 'none')
+```
+
+Visualize the correlations between these features.
+
+```{r}
+data %>% 
+  select(-time,-Participant,-Method,-RF) %>% 
+  cor() %>% 
+  corrplot(method = 'color',order = 'AOE',addCoef.col = 'grey')
+```
+
+Visualize the relationship between predictors and `Oxygen`.
+
+```{r}
+data %>% 
+  select(-time,-RF) %>% 
+  pivot_longer(cols = -c(Oxygen,Participant,Method),
+               names_to = 'Predictor',
+               values_to = 'Value') %>%
+  ggplot(aes(x = Value,
+             y = Oxygen,
+             color = as.character(Participant))) +
+  geom_point(size = 0.5) +
+  scale_color_brewer(palette = 'Set1') +
+  facet_wrap(~Predictor,scales = 'free',nrow = 2) +
+  labs(x = 'Predictor Values',
+       color = 'Participant',
+       shape = 'Method',
+       title = 'Relationship between Oxygen and Predictors') +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Visualize the relationship between `Cadence` and `Oxygen`.
+
+```{r}
+data %>% 
+  ggplot(aes(x = Cadence,y = Oxygen)) +
+  geom_point(size = 0.5) +
+  facet_grid(Method~Participant) +
+  labs(title = 'Oxygen vs Cadence',
+       subtitle = 'by Method and Participant') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        text = element_text(size = 8))
+```
+
+Visualize the relationship between `HR` and `Oxygen`.
+
+```{r}
+data %>% 
+  ggplot(aes(x = HR,y = Oxygen)) +
+  geom_point(size = 0.5) +
+  facet_grid(Method~Participant) +
+  labs(x = 'Heart Rate',
+       title = 'Oxygen vs Heart Rate',
+       subtitle = 'by Method and Participant') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        text = element_text(size = 8))
+```
+
+Visualize the relationship between `Power` and `Oxygen`.
+
+```{r}
+data %>% 
+  ggplot(aes(x = Power,y = Oxygen)) +
+  geom_point(size = 0.5) +
+  facet_grid(Method~Participant) +
+  labs(title = 'Oxygen vs Power',
+       subtitle = 'by Method and Participant') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        text = element_text(size = 8))
+```
+
+Visualize the trends of `Oxygen`.
+
+```{r}
+data %>% 
+  ggplot(aes(x = time,y = Oxygen)) +
+  geom_line() +
+  facet_grid(Method~Participant) +
+  labs(x = 'Time',
+       title = 'Oxygen vs Time',
+       subtitle = 'by Method and Participant') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        text = element_text(size = 8))
+```
+
+Select `Oxygen`, `Power`, `Cadence` and `HR`.
+
+```{r}
+new_data = data %>% 
+  select(Oxygen,Power,Cadence,HR)
+```
+
+# Modeling
+
+## Data Split
+
+Split the data into training set(70%) and test set(30%) using stratified random sampling.
+
+```{r}
+set.seed(1)
+train_id = createDataPartition(y = new_data$Oxygen,p = 0.7,list = F,groups = 100)
+train = new_data[train_id,]
+test = new_data[-train_id,]
+```
+
+We will fit GAM, SVM, random forest, xgboost and neural network using 10-fold cross-validation.
+
+```{r}
+set.seed(1)
+my_control = trainControl(method = 'cv',number = 10,search = 'random')
+f = as.formula('Oxygen~.')
+```
+
+## Generalized Additive Model
+
+Tune hyper-parameters for GAM on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+GAM = train(f,
+            data = train,
+            method = 'gam',
+            preProcess = c('center','scale'),
+            trControl = my_control,
+            tuneLength = 30,
+            metric = 'RMSE')
+```
+
+The final parameters for GAM are as follows.
+
+```{r}
+GAM$bestTune
+```
+
+Tune hyper-parameters for GAM on training set.
+
+Fit GAM using best hyper-parameters on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+final_GAM = train(f,
+                  data = train,
+                  method = 'gam',
+                  preProcess = c('center','scale'),
+                  tuneGrid = GAM$bestTune)
+```
+
+## Support Vector Machines with Radial Basis Function Kernel
+
+Tune hyper-parameters for SVM on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+svmRadial = train(f,
+                  data = train,
+                  method = 'svmRadial',
+                  preProcess = c('center','scale'),
+                  trControl = my_control,
+                  tuneLength = 30,
+                  metric = 'RMSE')
+```
+
+The final parameters for SVM are as follows.
+
+```{r}
+svmRadial$bestTune
+```
+
+Tune hyper-parameters for SVM on training set.
+
+Fit SVM using best hyper-parameters on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+final_svmRadial = train(f,
+                        data = train,
+                        method = 'svmRadial',
+                        preProcess = c('center','scale'),
+                        tuneGrid = svmRadial$bestTune)
+```
+
+## Support Vector Machines with Polynomial Kernel
+
+Tune hyper-parameters for SVM on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+svmPoly = train(f,
+                data = train,
+                method = 'svmPoly',
+                preProcess = c('center','scale'),
+                trControl = my_control,
+                tuneLength = 30,
+                metric = 'RMSE')
+```
+
+The final parameters for SVM are as follows.
+
+```{r}
+svmPoly$bestTune
+```
+
+Tune hyper-parameters for SVM on training set.
+
+Fit SVM using best hyper-parameters on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+final_svmPoly = train(f,
+                      data = train,
+                      method = 'svmPoly',
+                      preProcess = c('center','scale'),
+                      tuneGrid = svmPoly$bestTune)
+```
+
+## Random Forest
+
+Tune hyper-parameters for random forest on training set.
+
+```{r}
+set.seed(1)
+RF = train(f,
+           data = train,
+           method = 'ranger',
+           preProcess = c('center','scale'),
+           trControl = my_control,
+           tuneLength = 30,
+           metric = 'RMSE')
+```
+
+The final parameters for random forest are as follows.
+
+```{r}
+RF$bestTune
+```
+
+Tune hyper-parameters for random forest on training set.
+
+Fit random forest using best hyper-parameters on training set.
+
+```{r}
+set.seed(1)
+final_RF = train(f,
+                 data = train,
+                 method = 'ranger',
+                 preProcess = c('center','scale'),
+                 tuneGrid = RF$bestTune)
+```
+
+## XGBoost
+
+Tune hyper-parameters for xgboost on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+XGBoost = train(f,
+                data = train,
+                method = 'xgbTree',
+                preProcess = c('center','scale'),
+                trControl = my_control,
+                tuneLength = 30,
+                metric = 'RMSE')
+```
+
+The final parameters for xgboost are as follows.
+
+```{r}
+XGBoost$bestTune
+```
+
+Fit xgboost using best hyper-parameters on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+final_XGBoost = train(f,
+                      data = train,
+                      method = 'xgbTree',
+                      preProcess = c('center','scale'),
+                      tuneGrid = XGBoost$bestTune)
+```
+
+## Neural Network
+
+Tune hyper-parameters for neural network on training set.
+
+```{r}
+min_Oxygen = min(train$Oxygen)
+max_Oxygen = max(train$Oxygen)
+registerDoMC(4)
+set.seed(1)
+NNET = train(f,
+             data = train %>% mutate(Oxygen = (Oxygen-min_Oxygen)/(max_Oxygen-min_Oxygen)),
+             method = 'nnet',
+             trace = F,
+             preProcess = c('center','scale'),
+             trControl = my_control,
+             tuneLength = 30,
+             metric = 'RMSE')
+```
+
+The final parameters for neural network are as follows.
+
+```{r}
+NNET$bestTune
+```
+
+Fit neural network using best hyper-parameters on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+final_NNET = train(f,
+                   data = train %>% mutate(Oxygen = (Oxygen-min_Oxygen)/(max_Oxygen-min_Oxygen)),
+                   method = 'nnet',
+                   trace = F,
+                   preProcess = c('center','scale'),
+                   tuneGrid = NNET$bestTune)
+```
+
+## Stacked AutoEncoder Deep Neural Network
+
+Tune hyper-parameters for deep neural network on training set.
+
+```{r}
+min_Oxygen = min(train$Oxygen)
+max_Oxygen = max(train$Oxygen)
+registerDoMC(4)
+set.seed(1)
+DNN = train(f,
+            data = train %>% mutate(Oxygen = (Oxygen-min_Oxygen)/(max_Oxygen-min_Oxygen)),
+            method = 'dnn',
+            preProcess = c('center','scale'),
+            trControl = my_control,
+            tuneLength = 30,
+            metric = 'RMSE')
+```
+
+The final parameters for deep neural network are as follows.
+
+```{r}
+DNN$bestTune
+```
+
+Fit deep neural network using best hyper-parameters on training set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+final_DNN = train(f,
+                  data = train %>% mutate(Oxygen = (Oxygen-min_Oxygen)/(max_Oxygen-min_Oxygen)),
+                  method = 'dnn',
+                  preProcess = c('center','scale'),
+                  tuneGrid = DNN$bestTune)
+```
+
+# Model Evaluation
+
+Predict `Oxygen` using three models on test set.
+
+```{r}
+pre_GAM = predict(final_GAM,newdata = test)
+pre_svmRadial = predict(final_svmRadial,newdata = test)
+pre_svmPoly = predict(final_svmPoly,newdata = test)
+pre_RF = predict(final_RF,newdata = test)
+pre_XGBoost = predict(final_XGBoost,newdata = test)
+pre_NNET = predict(final_NNET,newdata = test)*(max_Oxygen-min_Oxygen)+min_Oxygen
+pre_DNN = predict(final_DNN,newdata = test)*(max_Oxygen-min_Oxygen)+min_Oxygen
+```
+
+Calculate RMSE, MAE and R-squared for all models on test set.
+
+```{r}
+metric = tibble(Model = c('GAM','SVM (Radial)','SVM (Poly)','Random Forest',
+                          'XGBoost','Neural Network','Deep Neural Network'),
+                RMSE = c(RMSE(pred = pre_GAM,obs = test$Oxygen),
+                         RMSE(pred = pre_svmRadial,obs = test$Oxygen),
+                         RMSE(pred = pre_svmPoly,obs = test$Oxygen),
+                         RMSE(pred = pre_RF,obs = test$Oxygen),
+                         RMSE(pred = pre_XGBoost,obs = test$Oxygen),
+                         RMSE(pred = pre_NNET,obs = test$Oxygen),
+                         RMSE(pred = pre_DNN,obs = test$Oxygen)),
+                MAE = c(MAE(pred = pre_GAM,obs = test$Oxygen),
+                        MAE(pred = pre_svmRadial,obs = test$Oxygen),
+                        MAE(pred = pre_svmPoly,obs = test$Oxygen),
+                        MAE(pred = pre_RF,obs = test$Oxygen),
+                        MAE(pred = pre_XGBoost,obs = test$Oxygen),
+                        MAE(pred = pre_NNET,obs = test$Oxygen),
+                        MAE(pred = pre_DNN,obs = test$Oxygen)),
+                R2 = c(cor(pre_GAM,test$Oxygen)^2,
+                       cor(pre_svmRadial,test$Oxygen)^2,
+                       cor(pre_svmPoly,test$Oxygen)^2,
+                       cor(pre_RF,test$Oxygen)^2,
+                       cor(pre_XGBoost,test$Oxygen)^2,
+                       cor(pre_NNET,test$Oxygen)^2,
+                       cor(pre_DNN,test$Oxygen)^2))
+metric
+```
+
+Visualize these metric results.
+
+```{r}
+metric %>% 
+  pivot_longer(cols = -Model,
+               names_to = 'Metric',
+               values_to = 'Value') %>% 
+  mutate(Model = reorder_within(Model,Value,Metric)) %>% 
+  ggplot(aes(x = Model,y = Value)) +
+  geom_col() +
+  scale_x_reordered() +
+  coord_flip() +
+  facet_wrap(~Metric,scales = 'free',nrow = 2) +
+  labs(y = 'Metric Values',
+       title = 'Model Evaluation on Test Set') +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = 'none')
+```
+
+Visualize the relationship between predicted `Oxygen` and true `Oxygen`.
+
+```{r}
+prediction = tibble(Oxygen = test$Oxygen,
+                    GAM = pre_GAM,
+                    svmRadial = pre_svmRadial,
+                    svmPoly = pre_svmPoly,
+                    `Random Forest` = pre_RF,
+                    XGBoost = pre_XGBoost,
+                    `Neural Network` = pre_NNET,
+                    `Deep Neural Network` = pre_DNN)
+prediction %>% 
+  pivot_longer(cols = -Oxygen,
+               names_to = 'Model',
+               values_to = 'Prediction') %>% 
+  ggplot(aes(x = Oxygen,y = Prediction)) +
+  geom_point(size = 0.5) +
+  geom_abline() +
+  facet_wrap(~Model,nrow = 3) +
+  labs(title = 'Predicted Oxygen vs True Oxygen') +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = 'none')
+```
+
+Train the best model on whole data set.
+
+```{r}
+registerDoMC(4)
+set.seed(1)
+model = train(f,
+              data = new_data,
+              method = 'ranger',
+              preProcess = c('center','scale'),
+              tuneGrid = RF$bestTune)
+```
+
+# Prediction
+
+Predict `Oxygen` for whole "Kaggle_Data.csv" and visualize it.
+
+```{r}
+data %>%
+  mutate(Prediction = predict(model,newdata = new_data)) %>% 
+  select(Participant,Method,time,True = Oxygen,Prediction) %>% 
+  pivot_longer(cols = -c(Participant,Method,time),
+               names_to = 'Type',
+               values_to = 'Oxygen') %>% 
+  ggplot(aes(x = time,y = Oxygen,group = Type,color = Type)) +
+  geom_line() +
+  scale_color_brewer(palette = 'Set1') +
+  facet_grid(Method~Participant) +
+  labs(x = 'Time',
+       y = 'Oxygen',
+       title = 'True Oxygen vs Predicted Oxygen',
+       color = NULL) +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = 'bottom',
+        text = element_text(size = 8))
+```
+
+Predict `Oxygen` for "O2_data_user1" and "O2_data_user3".
+
+```{r}
+O2_data_user1 = O2_data_user1 %>% 
+  select(Power = power,
+         Cadence = cadence,
+         HR = hear_rate)
+pre_O2_user1 = predict(model,newdata = O2_data_user1)
+data.frame(Prediction = pre_O2_user1) %>% 
+  mutate(Time = row_number()) %>% 
+  ggplot(aes(x = Time,y = Prediction)) +
+  geom_line() +
+  labs(x = 'Time',
+       y = 'Oxygen',
+       title = 'Predicted Oxygen for User 1') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+O2_data_user3 = O2_data_user3 %>% 
+  select(Power = power,
+         Cadence = cadence,
+         HR = hear_rate)
+pre_O2_user3 = predict(model,newdata = O2_data_user3)
+data.frame(Prediction = pre_O2_user3) %>% 
+  mutate(Time = row_number()) %>% 
+  ggplot(aes(x = Time,y = Prediction)) +
+  geom_line() +
+  labs(x = 'Time',
+       y = 'Oxygen',
+       title = 'Predicted Oxygen for User 3') +
+  theme_test() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
