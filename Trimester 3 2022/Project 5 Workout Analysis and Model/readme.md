@@ -2,6 +2,10 @@
 
 Whether a bike user is using an indoor trainer, cycling outdoors, or using Redback Operation’s VR product, being able to provide post-workout analysis and succinct data visualisations to the user is a critical component of the user experience. Being able to develop analytical models and tools to analyse workouts will also benefit Redback Operation’s ability to create popular/in-demand structured workouts. Furthermore, by beginning to analyse user data, Redback Operations can begin ranking users thus creating a competitive in-game environment.
 
+### Process Flow / Architecture 
+
+![image](https://user-images.githubusercontent.com/68144143/208272625-19e2f0cc-2daf-4d19-9dcf-553d7294ed0e.png)
+
 ---
 
 ##  Data Acquisition, Data Cleansing and Organisation
