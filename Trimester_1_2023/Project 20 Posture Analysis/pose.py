@@ -1,73 +1,135 @@
+#Pre-Req: Can only use protobuf v3.2 not higher with the current mediapipe version
+
 import cv2
 import numpy as np
 import tensorflow as tf
-from openpose import pyopenpose as op
+import mediapipe as mp
 
-# Load the trained model
-model = tf.keras.models.load_model('pose_estimation_model.h5')
 
-# Initialize OpenPose parameters
-params = dict()
-params["model_folder"] = "C:/openpose/models"
-params["model_pose"] = "BODY_25"
-opWrapper = op.WrapperPython()
-opWrapper.configure(params)
-opWrapper.start()
+
+# Initialize Mediapipe parameters
+mp_drawing = mp.solutions.drawing_utils
+mp_pose = mp.solutions.pose
 
 # Create a VideoCapture object to read video from a file or camera feed
-cap = cv2.VideoCapture('video.mp4')
+#currently set at the available camera, later we can change to different cameras
+cap = cv2.VideoCapture(2)
 
-while True:
-    # Read a frame from the video
-    ret, frame = cap.read()
 
-    if ret:
-        # Use OpenPose to detect the keypoints of each person in the frame
-        datum = op.Datum()
-        datum.cvInputData = frame
-        opWrapper.emplaceAndPop([datum])
+def calculate_angle(a,b,c):
+    a = np.array(a) # First
+    b = np.array(b) # Mid
+    c = np.array(c) # End
+    
+    radians = np.arctan2(c[1]-b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
+    angle = np.abs(radians*180.0/np.pi)
+    
+    if angle >180.0:
+        angle = 360-angle
+        
+    return angle 
 
-        # Pre-process the frame and extract the keypoints
-        frame = cv2.resize(frame, (256, 256))
-        frame = np.expand_dims(frame, axis=0)
-        frame = frame / 255.0
-        keypoints = datum.poseKeypoints
 
-        # Use the model to predict the pose
-        prediction = model.predict(frame)
+with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
+    while cap.isOpened():
+        # Read a frame from the video
+        ret, frame = cap.read()
+        # Recolor image to RGB
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        image.flags.writeable = False
+      
+        # Make detection
+        results = pose.process(image)
+    
+        # Recolor back to BGR
+        image.flags.writeable = True
+        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            
+            
+        try:
+            landmarks=results.pose_landmarks.landmark
+        
+            # Analyze body position
+            
+            # Get relevant landmarks for cycling posture detection --take their left  cross-section only
+            shoulder = [landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
+            elbow = [landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].y]
+            wrist = [landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].y]
+            
+           
+            # Check for elbow angle
+            elbowangle= calculate_angle(shoulder, elbow, wrist)
 
-        # Check for specific poses associated with each stretch
-        if keypoints is not None:
-            # Leg Swings
-            if keypoints[0][14][0] < keypoints[0][11][0]:
-                print("Leg Swings")
+         
+            
+            # Visualize angle
+            cv2.putText(image, str(elbowangle), 
+                           tuple(np.multiply(elbow, [640, 480]).astype(int)), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA
+                                )
+            # Check for hip angle
+            hip=[landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y]
+            knee=[landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].y]
+            
+            hipangle=calculate_angle(shoulder,hip,knee)
+        
+            cv2.putText(image, str(hipangle), 
+                           tuple(np.multiply(hip, [640, 480]).astype(int)), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA)       
+            
+            #check for wrist flex
+            knuckles = [landmarks[mp_pose.PoseLandmark.LEFT_INDEX.value].x,landmarks[mp_pose.PoseLandmark.LEFT_INDEX.value].y]
+       
+            wristangle= calculate_angle(elbow, wrist, knuckles)
+            
+            cv2.putText(image, str(wristangle), 
+                           tuple(np.multiply(wrist, [640, 480]).astype(int)), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA)
+                 
+            #check for knee extension
+            heel=[landmarks[mp_pose.PoseLandmark.LEFT_HEEL.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HEEL.value].y]
+            
+            kneeangle=calculate_angle(hip,knee,heel)
 
-            # Walking Lunges
-            elif keypoints[0][12][1] > keypoints[0][9][1]:
-                print("Walking Lunges")
+            cv2.putText(image, str(kneeangle), 
+                           tuple(np.multiply(knee, [640, 480]).astype(int)), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA)
+            
+            
 
-            # High Knees
-            elif keypoints[0][15][1] < keypoints[0][11][1]:
-                print("High Knees")
+        except:
+            pass
 
-            # Butt Kicks
-            elif keypoints[0][16][1] > keypoints[0][8][1]:
-                print("Butt Kicks")
 
-            # Leg Crossovers
-            elif keypoints[0][14][0] > keypoints[0][11][0] and keypoints[0][11][0] > keypoints[0][8][0]:
-                print("Leg Crossovers")
+        mp_drawing.draw_landmarks(image,results.pose_landmarks,mp_pose.POSE_CONNECTIONS,
+                                mp_drawing.DrawingSpec(color=(127,79,209),thickness=2,circle_radius=2),
+                                mp_drawing.DrawingSpec(color=(213,161,54),thickness=2,circle_radius=2))
+        cv2.imshow('Video Feed',image)
 
-            # Ankle Bounces
-            elif keypoints[0][19][1] < keypoints[0][18][1]:
-                print("Ankle Bounces")
 
-        # Display the results
-        cv2.imshow('Pose Estimation', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+
+
+    #     # Analyze pedalling technique
+
+    #     # Analyze aerodynamics
+
+    #     # Provide feedback
+    #     feedback = ""
+    #     if not hip_shoulders_level:
+    #         feedback += "Your hips and shoulders are not level. Try to align your body to avoid asymmetries.\n"
+    #     if not proper_ankling:
+    #         feedback += "Your pedalling technique is not optimal. Try to use proper ankling to maximize power output and reduce wasted energy.\n"
+    #     if frontal_surface_area > MAX_FRONTAL_SURFACE_AREA:
+    #         feedback += "Your body position is not streamlined enough. Try to tuck in your elbows and lower your head to reduce drag.\n"
+    #     if feedback == "":
+    #         feedback = "You're doing great! Keep up the good work."
+
+    #     # Display the results
+    #     cv2.imshow('Pose Estimation', frame)
+    #     print(feedback)
+        if cv2.waitKey(10) & 0xFF == ord('q'):
             break
-    else:
-        break
+    
 
 # Release the VideoCapture object and close all windows
 cap.release()
