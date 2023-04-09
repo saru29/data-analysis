@@ -2,7 +2,7 @@
 This script retrieves the latest workout data from the Wahoo Fitness API for a given user, saves the workout data as a .fit file in the fit_file folder, converts the .fit file to a CSV file and pandas dataframe (raw), and then processes the data for injection into a BigQuery table.
 
 ## Requirements
-Python 3.6 or higher
+Python 3.9 or higher
 Wahoo Fitness API access credentials
 BigQuery API access credentials
 Required Packages:
