@@ -55,12 +55,12 @@ This function processes the raw data from the fit_file folder and prepares for t
 
 ## Useful Links
 ### Products
-[Wahoo Fitness Kickr](https://au.wahoofitness.com/devices/indoor-cycling/bike-trainers/kickr-buy)
-[Wahoo Fitness Elemnt Bolt](https://au.wahoofitness.com/devices/bike-computers/elemnt-bolt-buy)
+* [Wahoo Fitness Kickr](https://au.wahoofitness.com/devices/indoor-cycling/bike-trainers/kickr-buy)
+* [Wahoo Fitness Elemnt Bolt](https://au.wahoofitness.com/devices/bike-computers/elemnt-bolt-buy)
 
 ### Docs
-[Wahoo Fitness Developers](https://developers.wahooligan.com/)
-[Wahoo Fitness API Documentation](https://cloud-api.wahooligan.com/#introduction)
-[Wahoo Fitness Workout Summary Documentation](https://cloud-api.wahooligan.com/#workout-summary)
-[Google Cloud BigQuery Python API Reference](https://cloud.google.com/python/docs/reference/bigquery/latest)
-[Garmin FIT SDK Overview](https://developer.garmin.com/fit/overview/)
+* [Wahoo Fitness Developers](https://developers.wahooligan.com/)
+* [Wahoo Fitness API Documentation](https://cloud-api.wahooligan.com/#introduction)
+* [Wahoo Fitness Workout Summary Documentation](https://cloud-api.wahooligan.com/#workout-summary)
+* [Google Cloud BigQuery Python API Reference](https://cloud.google.com/python/docs/reference/bigquery/latest)
+* [Garmin FIT SDK Overview](https://developer.garmin.com/fit/overview/)
