@@ -51,7 +51,7 @@ This function saves the .fit file as a file in the fit_file folder.
 ### fit_conversion() -> pandas.DataFrame: 
 This function reads in the .fit file from the fit_file folder, converts it to a CSV file, and returns the data as a pandas dataframe (raw).
 ### fit_process_data(raw: pandas.DataFrame) -> pandas.DataFrame: 
-This function processes the raw data from the fit_file folder and prepares it for injection into a BigQuery table.
+This function processes the raw data from the fit_file folder and prepares for then injects/creates a table in BigQuery.
 
 ## Useful Links
 ### Products
