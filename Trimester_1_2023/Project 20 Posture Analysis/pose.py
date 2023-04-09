@@ -13,7 +13,7 @@ mp_pose = mp.solutions.pose
 
 # Create a VideoCapture object to read video from a file or camera feed
 #currently set at the available camera, later we can change to different cameras
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(1)
 
 
 def calculate_angle(a,b,c):
@@ -47,6 +47,9 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             
             
         try:
+            
+            greenzone=(51,212,75)
+            redzone=(75,51,212)
             landmarks=results.pose_landmarks.landmark
         
             # Analyze body position
@@ -59,43 +62,66 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
            
             # Check for elbow angle
             elbowangle= calculate_angle(shoulder, elbow, wrist)
-
-         
+     
             
-            # Visualize angle
-            cv2.putText(image, str(elbowangle), 
+            if elbowangle>145 and elbowangle<165:
+                cv2.putText(image, str(round(elbowangle)), 
                            tuple(np.multiply(elbow, [640, 480]).astype(int)), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, greenzone, 2, cv2.LINE_AA
                                 )
+            else:
+                cv2.putText(image, str(round(elbowangle)), 
+                           tuple(np.multiply(elbow, [640, 480]).astype(int)), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (redzone), 2, cv2.LINE_AA
+                                )               
+        
             # Check for hip angle
             hip=[landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y]
             knee=[landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].y]
             
             hipangle=calculate_angle(shoulder,hip,knee)
-        
-            cv2.putText(image, str(hipangle), 
-                           tuple(np.multiply(hip, [640, 480]).astype(int)), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA)       
             
+            if hipangle<75 and hipangle>50:
+                cv2.putText(image, str(round(hipangle)), 
+                            tuple(np.multiply(hip, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (greenzone), 2, cv2.LINE_AA)    
+            else:
+                  cv2.putText(image, str(round(hipangle)), 
+                            tuple(np.multiply(hip, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (redzone), 2, cv2.LINE_AA)
+                   
+                
             #check for wrist flex
             knuckles = [landmarks[mp_pose.PoseLandmark.LEFT_INDEX.value].x,landmarks[mp_pose.PoseLandmark.LEFT_INDEX.value].y]
        
             wristangle= calculate_angle(elbow, wrist, knuckles)
             
-            cv2.putText(image, str(wristangle), 
-                           tuple(np.multiply(wrist, [640, 480]).astype(int)), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA)
-                 
+            if wristangle>170 :
+                cv2.putText(image, str(round(wristangle)), 
+                            tuple(np.multiply(wrist, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (greenzone), 2, cv2.LINE_AA)
+            else:
+                cv2.putText(image, str(round(wristangle)), 
+                        tuple(np.multiply(wrist, [640, 480]).astype(int)), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (redzone), 2, cv2.LINE_AA)
+                
             #check for knee extension
             heel=[landmarks[mp_pose.PoseLandmark.LEFT_HEEL.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HEEL.value].y]
             
             kneeangle=calculate_angle(hip,knee,heel)
-
-            cv2.putText(image, str(kneeangle), 
-                           tuple(np.multiply(knee, [640, 480]).astype(int)), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.5, (230,213, 240), 2, cv2.LINE_AA)
             
             
+            #add an up/downstroke check here
+            if kneeangle >125 and kneeangle<155:
+                cv2.putText(image, str(round(kneeangle)), 
+                            tuple(np.multiply(knee, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (greenzone), 2, cv2.LINE_AA)
+                
+            else:
+                cv2.putText(image, str(round(kneeangle)), 
+                            tuple(np.multiply(knee, [640, 480]).astype(int)), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (redzone), 2, cv2.LINE_AA)
+                                   
 
         except:
             pass
@@ -107,26 +133,26 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         cv2.imshow('Video Feed',image)
 
 
-
+         #if the left heel is ahead of the right heel were in an upstroke
+        rightheel=heel=[landmarks[mp_pose.PoseLandmark.LEFT_HEEL.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HEEL.value].y]
 
     #     # Analyze pedalling technique
-
+        if stroke!='down':
+            if ballangle >15  and ballangle<25:
+                #greenzone
+            else:
+                #redzone
+        else:
+            if ballangle <-5 and ballangle>-15:
+                #greenzone
+            else:
+                #redzone
+                
+                
     #     # Analyze aerodynamics
+           ##contour detection+transluscent image overlay+pose estimation
 
-    #     # Provide feedback
-    #     feedback = ""
-    #     if not hip_shoulders_level:
-    #         feedback += "Your hips and shoulders are not level. Try to align your body to avoid asymmetries.\n"
-    #     if not proper_ankling:
-    #         feedback += "Your pedalling technique is not optimal. Try to use proper ankling to maximize power output and reduce wasted energy.\n"
-    #     if frontal_surface_area > MAX_FRONTAL_SURFACE_AREA:
-    #         feedback += "Your body position is not streamlined enough. Try to tuck in your elbows and lower your head to reduce drag.\n"
-    #     if feedback == "":
-    #         feedback = "You're doing great! Keep up the good work."
 
-    #     # Display the results
-    #     cv2.imshow('Pose Estimation', frame)
-    #     print(feedback)
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
     
