@@ -4,7 +4,7 @@ This Python script collects cycling power data from a Bluetooth Low Energy (BLE)
 
 ## Requirements
 
-- Python 3.x
+- Python 3.9
 - `asyncio` library
 - `bleak` library
 - `pandas` library
