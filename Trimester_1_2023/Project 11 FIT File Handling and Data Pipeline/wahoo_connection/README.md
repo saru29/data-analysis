@@ -23,7 +23,7 @@ This Python script collects cycling power data from a Bluetooth Low Energy (BLE)
 5. Run the script:
 
     ```
-    python cycling_power_data_collection.py
+    python main.py
     ```
 
 The script will run for the specified `session_length` (in seconds) and save the collected data to a CSV file named "Activity_Data.csv" in the same directory as the script.
