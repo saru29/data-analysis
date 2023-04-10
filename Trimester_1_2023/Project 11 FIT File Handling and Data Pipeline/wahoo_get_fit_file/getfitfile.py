@@ -38,7 +38,7 @@ def get_latest_fit_file(application_token, secret_key, user_id):
     )
     access_token = auth_response.json()['access_token']
 
-    # Get the user's workouts
+    # Get the user's workout
     workouts_response = requests.get(
         f'https://api.wahooligan.com/v1/users/{user_id}/workouts',
         headers={'Authorization': f'Bearer {access_token}'}
