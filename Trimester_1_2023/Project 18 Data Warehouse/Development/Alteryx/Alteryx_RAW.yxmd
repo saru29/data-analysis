@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<AlteryxDocument yxmdVer="2021.4">
+<AlteryxDocument yxmdVer="2022.3">
   <Nodes>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
@@ -8,7 +8,7 @@
       <Properties>
         <Configuration>
           <Passwords />
-          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv</File>
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv</File>
           <FormatSpecificOptions>
             <HeaderRow>True</HeaderRow>
             <IgnoreErrors>False</IgnoreErrors>
@@ -32,26 +32,26 @@
         </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="timestamp" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="tiemstamp_AEST" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="date_AEST" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="distance" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="enhanced_altitude" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="ascent" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="grade" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="calories" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="enhanced_speed" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="heart_rate" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="temperature" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="cadence" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="power" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="gps_accuracy" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="sessionID" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="userID" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="age" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="gender" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="weight" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
-            <Field name="FTP" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="timestamp" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="tiemstamp_AEST" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="date_AEST" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="distance" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="enhanced_altitude" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="ascent" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="grade" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="calories" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="enhanced_speed" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="heart_rate" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="temperature" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="cadence" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="power" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="gps_accuracy" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="sessionID" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="userID" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="age" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="gender" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="weight" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
+            <Field name="FTP" size="254" source="File: C:\Users\prast\OneDrive\Documents\Assignments\SIT764\alteryx\bq-results-20230321-215404-1679435672783.csv" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -65,7 +65,7 @@
         <Configuration>
           <Value name="Check Box (135)">False</Value>
           <Value name="Check Box (136)">False</Value>
-          <Value name="List Box (11)">"tiemstamp_AEST"</Value>
+          <Value name="List Box (11)">"tiemstamp_AEST","userID"</Value>
           <Value name="Check Box (84)">False</Value>
           <Value name="Check Box (117)">False</Value>
           <Value name="Check Box (15)">True</Value>
@@ -87,64 +87,6 @@
         </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
-    </Node>
-    <Node ToolID="4">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="642" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File MaxRecords="" FileFormat="23">aka:MSI\prast|||test_pro_db</File>
-          <Passwords />
-          <CachedCosmeticName />
-          <FormatSpecificOptions>
-            <TransactionMessages>False</TransactionMessages>
-            <Geometry>True</Geometry>
-            <Projection />
-            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
-            <SpatialObjSize>8000</SpatialObjSize>
-            <OutputOption>Overwrite</OutputOption>
-            <PostSQL />
-            <TransactionSize>10000</TransactionSize>
-            <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='test_pro_db' and xtype='U')
-CREATE TABLE tempdb.dbo.test_pro_db
-(
-timestamp datetime,
-	timestamp_AEST	varchar(60),
-date_AEST date,
-	distance float,
-	enhanced_altitude float,
-	ascent int,
-	grade float,
-	calories int,
-	enhanced_speed float,
-	heart_rate int,
-	temperature int,
-	cadence int,
-	power int,
-	gps_accuracy int,
-	sessionID varchar(60),
-	userID varchar(30),
-	age int,
-	gender varchar(30),
-	weight int,
-	FTP int
-)</PreSQL>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>aka:MSI\prast
-Query=test_pro_db</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
     <Node ToolID="8">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
@@ -183,6 +125,87 @@ Query=test_pro_db</DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
     </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="630" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="23">aka:MSI\prast|||rw_fitness_data</File>
+          <Passwords />
+          <CachedCosmeticName />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <TransactionMessages>False</TransactionMessages>
+            <KeyForUpdate>
+              <KU_Fields>
+                <KU_Field key="timestamp" />
+                <KU_Field key="timestamp_AEST" />
+                <KU_Field key="date_AEST" />
+                <KU_Field key="distance" />
+                <KU_Field key="enhanced_altitude" />
+                <KU_Field key="ascent" />
+                <KU_Field key="grade" />
+                <KU_Field key="calories" />
+                <KU_Field key="enhanced_speed" />
+                <KU_Field key="heart_rate" />
+                <KU_Field key="temperature" />
+                <KU_Field key="cadence" />
+                <KU_Field key="power" />
+                <KU_Field key="gps_accuracy" />
+                <KU_Field key="sessionID" />
+                <KU_Field key="userID" />
+                <KU_Field key="FTP" />
+              </KU_Fields>
+            </KeyForUpdate>
+            <Geometry>True</Geometry>
+            <Projection />
+            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+            <SpatialObjSize>8000</SpatialObjSize>
+            <OutputOption>Upsert</OutputOption>
+            <PostSQL />
+            <TransactionSize>10000</TransactionSize>
+            <TableStyle>Quoted</TableStyle>
+            <PreSQL>IF OBJECT_ID(N'rw_data.dbo.rw_fitness_data', N'U') IS NULL
+CREATE TABLE rw_data.dbo.rw_fitness_data
+(
+id int not null primary key IDENTITY(1,1),
+timestamp datetime,
+	timestamp_AEST	varchar(60),
+date_AEST date,
+	distance float,
+	enhanced_altitude float,
+	ascent int,
+	grade float,
+	calories int,
+	enhanced_speed float,
+	heart_rate int,
+	temperature int,
+	cadence int,
+	power int,
+	gps_accuracy int,
+	sessionID varchar(60),
+	userID varchar(30),
+	age int,
+	gender varchar(30),
+	weight int,
+	FTP int
+)</PreSQL>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>aka:MSI\prast
+Query=rw_fitness_data</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
@@ -195,7 +218,7 @@ Query=test_pro_db</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="8" Connection="Output" />
-      <Destination ToolID="4" Connection="Input" />
+      <Destination ToolID="9" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
