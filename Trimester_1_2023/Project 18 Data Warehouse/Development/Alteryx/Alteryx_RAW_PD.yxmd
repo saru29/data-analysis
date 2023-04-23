@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="90" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>,</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>power_data.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="int64_field_0" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="step" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="instantaneous_power" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="accumulated_energy" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="pedal_power_balance" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="accumulated_torque" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="cumulative_wheel_revs" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="last_wheel_event_time" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="cumulative_crank_revs" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="last_crank_event_time" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="maximum_force_magnitude" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="minimum_force_magnitude" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="maximum_torque_magnitude" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="minimum_torque_magnitude" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="top_dead_spot_angle" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+            <Field name="bottom_dead_spot_angle" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\power_data.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="234" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="step" selected="True" />
+            <SelectField field="instantaneous_power" selected="True" />
+            <SelectField field="accumulated_torque" selected="True" />
+            <SelectField field="cumulative_wheel_revs" selected="True" />
+            <SelectField field="last_wheel_event_time" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="426" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="step" selected="True" type="DateTime" size="19" />
+            <SelectField field="instantaneous_power" selected="True" type="Int64" size="8" />
+            <SelectField field="accumulated_torque" selected="True" type="Int64" size="8" />
+            <SelectField field="cumulative_wheel_revs" selected="True" type="Int64" size="8" />
+            <SelectField field="last_wheel_event_time" selected="True" type="Int64" size="8" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="330" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="DateTimeFormat(DateTimeParse([step],&quot;%m/%d/%Y %H:%M:%S&quot;),&quot;%Y-%m-%d %H:%M:%S&quot;)" field="step" size="254" type="V_String" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>step = DateTimeFormat(DateTimeParse([step],"%m/%d/%Y %H:%M:%S"),"%Y-%m-%d %H:%M:...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="534" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="23">aka:Saru|||rw_power_data</File>
+          <Passwords />
+          <CachedCosmeticName />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <TransactionMessages>False</TransactionMessages>
+            <KeyForUpdate>
+              <KU_Fields>
+                <KU_Field key="step" />
+              </KU_Fields>
+            </KeyForUpdate>
+            <Geometry>True</Geometry>
+            <Projection />
+            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+            <SpatialObjSize>8000</SpatialObjSize>
+            <OutputOption>Upsert</OutputOption>
+            <PostSQL />
+            <TransactionSize>10000</TransactionSize>
+            <TableStyle>Quoted</TableStyle>
+            <PreSQL>IF OBJECT_ID(N'rw_data.dbo.rw_power_data', N'U') IS NULL
+CREATE TABLE rw_data.dbo.rw_power_data
+(
+	step timestamp NOT NULL,
+	instantaneous_power int,
+	cumulative_wheel_revs int,
+	last_wheel_event_time int
+)</PreSQL>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>aka:Saru
+Query=rw_power_data</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Alteryx_RAW_PD</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="a1db8b37-e277-4b41-9a1c-a20db9eb7798" />
+      <Telemetry>
+        <PreviousWorkflowId value="2b23d34c-627a-4c2c-8467-8e5aea14c2fc" />
+        <OriginWorkflowId value="2b23d34c-627a-4c2c-8467-8e5aea14c2fc" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
