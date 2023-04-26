@@ -1,1 +1,0 @@
-readmeKey Documentation for Python and Bigquery operations 
