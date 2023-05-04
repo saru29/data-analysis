@@ -27,9 +27,6 @@
           <DefaultAnnotationText>customer_addresses.csv</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="customer_id" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\customer_addresses.csv" type="V_String" />
@@ -51,8 +48,8 @@
         <Configuration>
           <Value name="Check Box (135)">False</Value>
           <Value name="Check Box (136)">False</Value>
-          <Value name="List Box (11)">"customer_id","postcode","property_valuation"</Value>
-          <Value name="Check Box (84)">False</Value>
+          <Value name="List Box (11)">"address","state","country"</Value>
+          <Value name="Check Box (84)">True</Value>
           <Value name="Check Box (117)">False</Value>
           <Value name="Check Box (15)">True</Value>
           <Value name="Check Box (109)">True</Value>
@@ -68,6 +65,9 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
@@ -148,7 +148,9 @@ customer_id - Ascending</DefaultAnnotationText>
             <PostSQL />
             <TransactionSize>10000</TransactionSize>
             <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF OBJECT_ID(N'rw_data.dbo.rw_customer_address', N'U') IS NULL
+            <PreSQL>USE rw_data;
+
+IF OBJECT_ID(N'rw_data.dbo.rw_customer_address', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_customer_address
 (
 	customer_id varchar(10) NOT NULL primary key,
@@ -167,9 +169,6 @@ CREATE TABLE rw_data.dbo.rw_customer_address
 Query=rw_customer_address</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
@@ -212,7 +211,7 @@ Query=rw_customer_address</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>New Workflow2</Name>
+      <Name>Alteryx_RAW_CA</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
