@@ -27,7 +27,7 @@
     </Node>
     <Node ToolID="15">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BlockUntilDone.BlockUntilDone">
-        <Position x="318" y="102" />
+        <Position x="330" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration />
@@ -41,7 +41,7 @@
     </Node>
     <Node ToolID="16">
       <GuiSettings Plugin="AlteryxBasePluginsGui.BlockUntilDone.BlockUntilDone">
-        <Position x="606" y="102" />
+        <Position x="618" y="102" />
       </GuiSettings>
       <Properties>
         <Configuration />
@@ -122,7 +122,7 @@
         </Annotation>
       </Properties>
       <ChildNodes>
-        <Node ToolID="13">
+        <Node ToolID="19">
           <GuiSettings>
             <Position x="726" y="102" />
           </GuiSettings>
@@ -159,7 +159,7 @@
         </Annotation>
       </Properties>
       <ChildNodes>
-        <Node ToolID="14">
+        <Node ToolID="18">
           <GuiSettings>
             <Position x="426" y="102" />
           </GuiSettings>
@@ -223,22 +223,22 @@
     </Connection>
     <Connection>
       <Origin ToolID="15" Connection="Output" />
-      <Destination ToolID="14" Connection="Input6" />
+      <Destination ToolID="18" Connection="Input6" />
     </Connection>
     <Connection>
       <Origin ToolID="16" Connection="Output" />
-      <Destination ToolID="13" Connection="Input7" />
+      <Destination ToolID="19" Connection="Input7" />
     </Connection>
     <Connection>
       <Origin ToolID="17" Connection="Output" />
       <Destination ToolID="11" Connection="Input9" />
     </Connection>
     <Connection>
-      <Origin ToolID="13" Connection="Output8" />
+      <Origin ToolID="19" Connection="Output8" />
       <Destination ToolID="17" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="14" Connection="Output7" />
+      <Origin ToolID="18" Connection="Output7" />
       <Destination ToolID="16" Connection="Input" />
     </Connection>
     <Connection>

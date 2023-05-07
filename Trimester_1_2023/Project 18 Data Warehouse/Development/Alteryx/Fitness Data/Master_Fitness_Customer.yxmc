@@ -110,8 +110,7 @@ id int not null primary key IDENTITY(1,1),
 	created_by varchar(30) default 'PSAPKOTA',
 	modified_on datetime,
 	modified_by varchar(30)
-)
-GO</PreSQL>
+)</PreSQL>
           </FormatSpecificOptions>
           <MultiFile value="False" />
         </Configuration>
