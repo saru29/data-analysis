@@ -286,7 +286,8 @@ Insert into master_data.dbo.md_dataload
            ,'PSAPKOTA');</PostSQL>
             <TransactionSize>10000</TransactionSize>
             <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF OBJECT_ID(N'sw_data.dbo.sw_fitness_data', N'U') IS NULL
+            <PreSQL>USE sw_data;
+IF OBJECT_ID(N'sw_data.dbo.sw_fitness_data', N'U') IS NULL
 CREATE TABLE sw_data.dbo.sw_fitness_data
 (
 id int not null primary key IDENTITY(1,1),
@@ -315,6 +316,9 @@ timestamp datetime,
 Query=sw_fitness_data</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
@@ -323,6 +327,7 @@ Query=sw_fitness_data</DefaultAnnotationText>
         <Position x="0" y="0" width="59" height="59" />
       </GuiSettings>
       <Properties>
+        <Configuration />
         <Annotation DisplayMode="0">
           <Name />
           <DefaultAnnotationText />

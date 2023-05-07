@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="114" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <CachedCosmeticName />
+          <File FileFormat="23" RecordLimit="">aka:MSI\prast|||select * 
+from sw_data.dbo.sw_fitness_data</File>
+          <FormatSpecificOptions>
+            <SingleRowFetch>False</SingleRowFetch>
+            <ReadCentroids>False</ReadCentroids>
+            <TableStyle>Quoted</TableStyle>
+            <CacheData>False</CacheData>
+            <SessionReadOnly>True</SessionReadOnly>
+            <ReadUncommitted>False</ReadUncommitted>
+            <NoProgress>True</NoProgress>
+            <PostSQL />
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <PreSQL />
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>aka:MSI\prast
+Query=select * 
+from sw_data.dbo....</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="timestamp" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="DateTime" />
+            <Field name="distance" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Double" />
+            <Field name="enhanced_altitude" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Double" />
+            <Field name="ascent" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="grade" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Double" />
+            <Field name="calories" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="enhanced_speed" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Double" />
+            <Field name="heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="temperature" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="cadence" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="power" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="gps_accuracy" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="sessionID" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="V_String" />
+            <Field name="fit_user_id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+            <Field name="FTP" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select * &#xA;from sw_data.dbo.sw_fitness_data" type="Int32" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="258" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="1033">
+            <Field field="fit_user_id" order="Ascending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>fit_user_id - Ascending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="timestamp" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="DateTime" />
+            <Field name="distance" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Double" />
+            <Field name="enhanced_altitude" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Double" />
+            <Field name="ascent" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="grade" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Double" />
+            <Field name="calories" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="enhanced_speed" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Double" />
+            <Field name="heart_rate" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="temperature" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="cadence" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="power" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="gps_accuracy" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="sessionID" size="60" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="V_String" />
+            <Field name="fit_user_id" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="FTP" source="File: aka:MSI\prast|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="402" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="distance" action="Sum" rename="total_distance" />
+            <SummarizeField field="calories" action="Sum" rename="total_calories_burned" />
+            <SummarizeField field="heart_rate" action="Min" rename="min_heart_rate" />
+            <SummarizeField field="heart_rate" action="Max" rename="max_heart_rate" />
+            <SummarizeField field="enhanced_speed" action="Max" rename="max_enhanced_speed" />
+            <SummarizeField field="enhanced_altitude" action="Max" rename="max_enhanced_altitude" />
+            <SummarizeField field="timestamp" action="Max" rename="last_record_date" />
+            <SummarizeField field="fit_user_id" action="GroupBy" rename="fit_user_id" />
+            <SummarizeField field="temperature" action="Avg" rename="avg_temperature" />
+            <SummarizeField field="cadence" action="Avg" rename="avg_cadence" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="total_distance" source="Summarize: Sum - distance" type="Double" />
+            <Field name="total_calories_burned" source="Summarize: Sum - calories" type="Int64" />
+            <Field name="min_heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="max_heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Int32" />
+            <Field name="max_enhanced_speed" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Double" />
+            <Field name="max_enhanced_altitude" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="Double" />
+            <Field name="last_record_date" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select sw_fitness_data.* &#xA;from sw_fitness_data" type="DateTime" />
+            <Field name="fit_user_id" source="Summarize: GroupBy - fit_user_id" type="Int32" />
+            <Field name="avg_temperature" source="Summarize: Avg - temperature" type="Double" />
+            <Field name="avg_cadence" source="Summarize: Avg - cadence" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="546" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="23">aka:MSI\prast|||rp_fitness_data</File>
+          <Passwords />
+          <CachedCosmeticName />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <TransactionMessages>False</TransactionMessages>
+            <Geometry>True</Geometry>
+            <Projection />
+            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+            <SpatialObjSize>8000</SpatialObjSize>
+            <OutputOption>Append</OutputOption>
+            <PostSQL />
+            <TransactionSize>10000</TransactionSize>
+            <TableStyle>Quoted</TableStyle>
+            <PreSQL>USE rp_data;
+IF OBJECT_ID(N'rp_data.dbo.rp_fitness_data', N'U') IS NULL
+CREATE TABLE rp_data.dbo.rp_fitness_data
+(
+id int not null primary key IDENTITY(1,1),
+fit_user_id int,
+last_record_date datetime,
+	total_distance float,
+	max_enhanced_altitude float,
+	total_calories_burned int,
+	max_enhanced_speed float,
+	max_heart_rate int,
+	min_heart_rate int,
+	avg_cadence float,
+	avg_temperature float
+)</PreSQL>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>aka:MSI\prast
+Query=rp_fitness_data</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+        <Position x="0" y="0" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+        <Position x="174" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UseFileInput value="False" />
+          <Name>Input9</Name>
+          <Abbrev />
+          <ShowFieldMap value="True" />
+          <Optional value="False" />
+          <TextInput>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="test" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>test</c>
+                </r>
+              </Data>
+            </Configuration>
+          </TextInput>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Input</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="True" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="test" size="2147483647" source="TextInput:" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+        <Position x="378" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Name>Output10</Name>
+          <Abbrev />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Output</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <Constants>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Input (9)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Output (10)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+    </Constants>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>RP_Fitness_Data</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="f3cae9dd-25ac-4fc3-b143-c2151a5eedf5" />
+      <Telemetry>
+        <PreviousWorkflowId value="6b378c9c-3756-404e-8858-75747074bcb1" />
+        <OriginWorkflowId value="ebc8518f-b7b7-43ea-840e-1e63a809ffd7" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+    <RuntimeProperties>
+      <Actions />
+      <Questions>
+        <Question>
+          <Type>Tab</Type>
+          <Description>Questions</Description>
+          <Name>Tab (8)</Name>
+          <ToolId value="8" />
+          <Questions>
+            <Question>
+              <Type>MacroInput</Type>
+              <Description>Macro Input (9)</Description>
+              <Name>Macro Input (9)</Name>
+              <ToolId value="9" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description>Macro Output (10)</Description>
+              <Name>Macro Output (10)</Name>
+              <ToolId value="10" />
+            </Question>
+          </Questions>
+        </Question>
+      </Questions>
+      <ModuleType>Macro</ModuleType>
+      <MacroCustomHelp value="False" />
+      <MacroDynamicOutputFields value="False" />
+      <MacroImageStd value="39" />
+      <MacroInputs />
+      <MacroOutputs />
+      <Wiz_CustomHelp value="False" />
+      <Wiz_CustomGraphic value="False" />
+      <Wiz_ShowOutput value="True" />
+      <Wiz_OpenOutputTools>
+        <Tool ToolId="7" Selected="True" />
+        <Tool ToolId="9" Selected="True" />
+        <Tool ToolId="10" Selected="True" />
+      </Wiz_OpenOutputTools>
+      <Wiz_OutputMessage />
+      <Wiz_NoOutputFilesMessage />
+      <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+  </Properties>
+</AlteryxDocument>
