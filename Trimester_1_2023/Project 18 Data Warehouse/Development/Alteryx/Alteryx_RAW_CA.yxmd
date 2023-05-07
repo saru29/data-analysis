@@ -65,9 +65,6 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
@@ -153,7 +150,7 @@ customer_id - Ascending</DefaultAnnotationText>
 IF OBJECT_ID(N'rw_data.dbo.rw_customer_address', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_customer_address
 (
-	customer_id varchar(10) NOT NULL primary key,
+	customer_id varchar(10),
 	address varchar(150),
 	postcode char(4),
 	state varchar(50),
@@ -169,6 +166,9 @@ CREATE TABLE rw_data.dbo.rw_customer_address
 Query=rw_customer_address</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>

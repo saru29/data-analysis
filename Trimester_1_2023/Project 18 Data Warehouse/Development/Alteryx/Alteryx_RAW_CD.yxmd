@@ -406,7 +406,7 @@
 IF OBJECT_ID(N'rw_data.dbo.rw_customer_demographics', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_customer_demographics
 (
-	customer_id varchar(10) NOT NULL primary key,
+	customer_id varchar(10),
 	first_name varchar(100),
 	last_name varchar(100),
 	gender varchar (50),
@@ -459,9 +459,6 @@ Query=rw_customer_demographics</DefaultAnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>

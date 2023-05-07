@@ -147,9 +147,6 @@ owns_car = IF [...</DefaultAnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
@@ -194,7 +191,7 @@ owns_car = IF [...</DefaultAnnotationText>
 IF OBJECT_ID(N'rw_data.dbo.rw_customers', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_customers
 (
-	first_name varchar(50)NOT NULL,
+	first_name varchar(50),
 	last_name varchar(50),
 	gender varchar(50),
 	past_3_years_bike_related_purchases int,
@@ -222,6 +219,9 @@ CREATE TABLE rw_data.dbo.rw_customers
 Query=rw_customers</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>

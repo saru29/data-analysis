@@ -529,15 +529,19 @@ Query=ms_transactions</DefaultAnnotationText>
               <OrderChanged value="False" />
               <CommaDecimal value="False" />
               <SelectFields>
-                <SelectField field="transaction_date" selected="False" type="Date" size="10" />
-                <SelectField field="online_order" selected="False" type="Bool" size="1" />
+                <SelectField field="transaction_id" selected="True" />
+                <SelectField field="product_id" selected="True" />
+                <SelectField field="customer_id" selected="True" />
+                <SelectField field="transaction_date" selected="True" type="Date" size="10" />
+                <SelectField field="online_order" selected="True" type="Bool" size="1" />
+                <SelectField field="order_status" selected="True" />
                 <SelectField field="brand" selected="True" />
                 <SelectField field="product_line" selected="True" />
                 <SelectField field="product_class" selected="True" />
                 <SelectField field="product_size" selected="True" />
-                <SelectField field="list_price" selected="False" type="Float" size="4" />
-                <SelectField field="standard_cost" selected="False" type="Float" size="4" />
-                <SelectField field="product_first_sold_date" selected="False" type="Int64" size="8" />
+                <SelectField field="list_price" selected="True" type="Float" size="4" />
+                <SelectField field="standard_cost" selected="True" type="Float" size="4" />
+                <SelectField field="product_first_sold_date" selected="True" type="Int64" size="8" />
                 <SelectField field="*Unknown" selected="False" />
               </SelectFields>
             </Configuration>

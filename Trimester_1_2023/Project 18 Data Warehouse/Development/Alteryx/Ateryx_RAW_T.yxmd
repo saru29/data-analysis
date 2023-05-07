@@ -348,9 +348,6 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
@@ -445,9 +442,9 @@
 IF OBJECT_ID(N'rw_data.dbo.rw_transactions', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_transactions
 (
-	customer_id varchar(10) NOT NULL,
-	transaction_id varchar(10) NOT NULL primary key,
-	product_id varchar(10) NOT NULL,
+	customer_id varchar(10),
+	transaction_id varchar(10),
+	product_id varchar(10),
 	transaction_date date,
 	online_order bit,
 	order_status varchar(50),
