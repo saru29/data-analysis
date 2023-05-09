@@ -97,7 +97,8 @@ Query=select rw_data.dbo.rw_fitnes...</DefaultAnnotationText>
             <PostSQL />
             <TransactionSize>10000</TransactionSize>
             <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF OBJECT_ID(N'master_data.dbo.md_fitness_user', N'U') IS NULL
+            <PreSQL>USE master_data;
+IF OBJECT_ID(N'master_data.dbo.md_fitness_user', N'U') IS NULL
 CREATE TABLE master_data.dbo.md_fitness_user
 (
 id int not null primary key IDENTITY(1,1),
@@ -109,8 +110,7 @@ id int not null primary key IDENTITY(1,1),
 	created_by varchar(30) default 'PSAPKOTA',
 	modified_on datetime,
 	modified_by varchar(30)
-)
-GO</PreSQL>
+)</PreSQL>
           </FormatSpecificOptions>
           <MultiFile value="False" />
         </Configuration>
@@ -120,6 +120,9 @@ GO</PreSQL>
 Query=md_fitness_user</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
@@ -162,6 +165,7 @@ Query=md_fitness_user</DefaultAnnotationText>
         <Position x="0" y="0" width="59" height="59" />
       </GuiSettings>
       <Properties>
+        <Configuration />
         <Annotation DisplayMode="0">
           <Name />
           <DefaultAnnotationText />

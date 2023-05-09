@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="78" y="66" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -27,9 +27,6 @@
           <DefaultAnnotationText>customers.csv</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="first_name" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\customers.csv" type="V_String" />
@@ -62,7 +59,7 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="294" y="66" />
+        <Position x="270" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -84,7 +81,7 @@ owns_car = IF [...</DefaultAnnotationText>
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="402" y="66" />
+        <Position x="378" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -127,14 +124,14 @@ owns_car = IF [...</DefaultAnnotationText>
     </Node>
     <Node ToolID="7">
       <GuiSettings>
-        <Position x="510" y="66" />
+        <Position x="486" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Value name="Check Box (135)">False</Value>
           <Value name="Check Box (136)">False</Value>
-          <Value name="List Box (11)">"first_name","last_name","gender","job_title","job_industry_category"</Value>
-          <Value name="Check Box (84)">False</Value>
+          <Value name="List Box (11)">"first_name","last_name","gender","job_title","job_industry_category","wealth_segment","address","state","country"</Value>
+          <Value name="Check Box (84)">True</Value>
           <Value name="Check Box (117)">False</Value>
           <Value name="Check Box (15)">True</Value>
           <Value name="Check Box (109)">True</Value>
@@ -150,15 +147,12 @@ owns_car = IF [...</DefaultAnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
     <Node ToolID="9">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="618" y="66" />
+        <Position x="594" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -192,10 +186,12 @@ owns_car = IF [...</DefaultAnnotationText>
             <PostSQL />
             <TransactionSize>10000</TransactionSize>
             <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF OBJECT_ID(N'rw_data.dbo.rw_customers', N'U') IS NULL
+            <PreSQL>USE rw_data;
+
+IF OBJECT_ID(N'rw_data.dbo.rw_customers', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_customers
 (
-	first_name varchar(50)NOT NULL,
+	first_name varchar(50),
 	last_name varchar(50),
 	gender varchar(50),
 	past_3_years_bike_related_purchases int,
@@ -231,7 +227,7 @@ Query=rw_customers</DefaultAnnotationText>
     </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="186" y="66" />
+        <Position x="162" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>

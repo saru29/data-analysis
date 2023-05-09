@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="102" y="90" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -27,9 +27,6 @@
           <DefaultAnnotationText>transactions.csv</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="transaction_id" size="254" source="File: C:\Users\saran\OneDrive\Project - 1\Data\transactions.csv" type="V_String" />
@@ -295,7 +292,7 @@
     </Node>
     <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="258" y="90" />
+        <Position x="210" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -328,14 +325,14 @@
     </Node>
     <Node ToolID="3">
       <GuiSettings>
-        <Position x="378" y="90" />
+        <Position x="330" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Value name="Check Box (135)">False</Value>
           <Value name="Check Box (136)">False</Value>
-          <Value name="List Box (11)">"transaction_id","product_id","customer_id","transaction_date","online_order","order_status","brand","product_line","product_class","product_size","list_price","standard_cost","product_first_sold_date"</Value>
-          <Value name="Check Box (84)">False</Value>
+          <Value name="List Box (11)">"order_status","brand","product_line","product_class","product_size"</Value>
+          <Value name="Check Box (84)">True</Value>
           <Value name="Check Box (117)">False</Value>
           <Value name="Check Box (15)">True</Value>
           <Value name="Check Box (109)">True</Value>
@@ -351,27 +348,32 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
     <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-        <Position x="642" y="90" />
+        <Position x="594" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <OrderChanged value="False" />
           <CommaDecimal value="False" />
           <SelectFields>
+            <SelectField field="transaction_id" selected="True" />
+            <SelectField field="product_id" selected="True" />
+            <SelectField field="customer_id" selected="True" />
             <SelectField field="transaction_date" selected="True" type="Date" size="10" />
             <SelectField field="online_order" selected="True" type="Bool" size="1" />
+            <SelectField field="order_status" selected="True" />
+            <SelectField field="brand" selected="True" />
+            <SelectField field="product_line" selected="True" />
+            <SelectField field="product_class" selected="True" />
+            <SelectField field="product_size" selected="True" />
             <SelectField field="list_price" selected="True" type="Float" size="4" />
             <SelectField field="standard_cost" selected="True" type="Float" size="4" />
             <SelectField field="product_first_sold_date" selected="True" type="Int64" size="8" />
-            <SelectField field="*Unknown" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -384,7 +386,7 @@
     </Node>
     <Node ToolID="7">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="522" y="90" />
+        <Position x="474" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -403,7 +405,7 @@
     </Node>
     <Node ToolID="9">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="786" y="90" />
+        <Position x="702" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -435,12 +437,14 @@
             <PostSQL />
             <TransactionSize>10000</TransactionSize>
             <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF OBJECT_ID(N'rw_data.dbo.rw_transactions', N'U') IS NULL
+            <PreSQL>USE rw_data;
+
+IF OBJECT_ID(N'rw_data.dbo.rw_transactions', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_transactions
 (
-	customer_id varchar(10) NOT NULL primary key,
-	transaction_id varchar(10) NOT NULL,
-	product_id varchar(10) NOT NULL,
+	customer_id varchar(10),
+	transaction_id varchar(10),
+	product_id varchar(10),
 	transaction_date date,
 	online_order bit,
 	order_status varchar(50),

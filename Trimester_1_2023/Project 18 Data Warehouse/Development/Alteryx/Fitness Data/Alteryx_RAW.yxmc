@@ -187,7 +187,8 @@
             <PostSQL />
             <TransactionSize>10000</TransactionSize>
             <TableStyle>Quoted</TableStyle>
-            <PreSQL>IF OBJECT_ID(N'rw_data.dbo.rw_fitness_data', N'U') IS NULL
+            <PreSQL>USE rw_data;
+IF OBJECT_ID(N'rw_data.dbo.rw_fitness_data', N'U') IS NULL
 CREATE TABLE rw_data.dbo.rw_fitness_data
 (
 id int not null primary key IDENTITY(1,1),
@@ -221,6 +222,9 @@ date_AEST date,
 Query=rw_fitness_data</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
@@ -229,6 +233,7 @@ Query=rw_fitness_data</DefaultAnnotationText>
         <Position x="0" y="0" width="59" height="59" />
       </GuiSettings>
       <Properties>
+        <Configuration />
         <Annotation DisplayMode="0">
           <Name />
           <DefaultAnnotationText />
