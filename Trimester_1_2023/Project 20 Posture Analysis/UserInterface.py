@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import ImageTk, Image
 from ttkthemes import ThemedStyle
+from Analyser import PoseAnalyzer
+from PostWO import PostWorkoutClass
+
 
 def switch_to_stretches():
     # Code to switch to stretches mode
@@ -9,6 +12,8 @@ def switch_to_stretches():
     btn_stretches.configure(style="SelectedIconButton.TButton")  # Highlight the button for stretches
     btn_cycling.configure(style="IconButton.TButton")  # Reset the button for cycling
     btn_cooldowns.configure(style="IconButton.TButton")  # Reset the button for cooldowns
+    post_workout = PostWorkoutClass()
+    post_workout.perform_stretches()  # Assuming the main function is named run
 
 def switch_to_cycling():
     # Code to switch to cycling mode
@@ -16,7 +21,13 @@ def switch_to_cycling():
     btn_stretches.configure(style="IconButton.TButton")  # Reset the button for stretches
     btn_cycling.configure(style="SelectedIconButton.TButton")  # Highlight the button for cycling
     btn_cooldowns.configure(style="IconButton.TButton")  # Reset the button for cooldowns
-
+    pose_analyzer = PoseAnalyzer()
+    
+    # Load the dataset from the .pkl file
+    dataset_images = pose_analyzer.load_dataset('posturedataset.json')
+    
+    dataset_joint_angles = pose_analyzer.calculate_dataset_angles(dataset_images)
+    pose_analyzer.run(dataset_joint_angles)
 def switch_to_cooldowns():
     # Code to switch to cooldowns mode
     print("Switched to cooldowns mode")
