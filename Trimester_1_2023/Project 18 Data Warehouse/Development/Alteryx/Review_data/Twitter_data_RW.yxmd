@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="2">
       <GuiSettings>
-        <Position x="330" y="138" />
+        <Position x="162" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -26,15 +26,12 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
     <Node ToolID="4">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="222" y="138" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -51,9 +48,6 @@
 Query=`twitter$`</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="int64_field_1" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet.xlsx|||`twitter$`" type="Double" />
@@ -68,7 +62,7 @@ Query=`twitter$`</DefaultAnnotationText>
     </Node>
     <Node ToolID="5">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="486" y="138" />
+        <Position x="318" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -95,9 +89,6 @@ Query=`twitter$`</DefaultAnnotationText>
 Query=rw_twitter_data</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
@@ -132,7 +123,7 @@ Query=rw_twitter_data</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>Twitter</Name>
+      <Name>Twitter_data_RW</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
