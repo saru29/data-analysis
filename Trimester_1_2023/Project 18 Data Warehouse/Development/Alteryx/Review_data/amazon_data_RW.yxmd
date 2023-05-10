@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="126" y="114" />
+        <Position x="54" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -14,7 +14,7 @@
             <IgnoreErrors>False</IgnoreErrors>
             <AllowShareWrite>False</AllowShareWrite>
             <ImportLine>1</ImportLine>
-            <FieldLen>254</FieldLen>
+            <FieldLen>3000</FieldLen>
             <SingleThreadRead>False</SingleThreadRead>
             <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
             <Delimeter>,</Delimeter>
@@ -32,18 +32,18 @@
         </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="int64_field_0" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="reviewerName" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="overall" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="reviewText" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="reviewTime" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="day_diff" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="helpful_yes" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="helpful_no" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="total_vote" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="score_pos_neg_diff" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="score_average_rating" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
-            <Field name="wilson_lower_bound" size="254" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="int64_field_0" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="reviewerName" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="overall" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="reviewText" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="reviewTime" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="day_diff" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="helpful_yes" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="helpful_no" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="total_vote" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="score_pos_neg_diff" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="score_average_rating" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
+            <Field name="wilson_lower_bound" size="3000" source="File: C:\Users\Ankit Mehta\Downloads\Project\Untitled spreadsheet - amazon_reviews.csv" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
@@ -51,7 +51,7 @@
     </Node>
     <Node ToolID="2">
       <GuiSettings>
-        <Position x="270" y="114" />
+        <Position x="198" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -74,15 +74,12 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings Macro="Cleanse.yxmc" />
     </Node>
     <Node ToolID="3">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="402" y="114" />
+        <Position x="330" y="54" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -108,9 +105,6 @@
 Query=rw_amazon_data</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
-        <Dependencies>
-          <Implicit />
-        </Dependencies>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
@@ -145,7 +139,7 @@ Query=rw_amazon_data</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>amazon</Name>
+      <Name>amazon_data_RW</Name>
       <Description />
       <RootToolName />
       <ToolVersion />
