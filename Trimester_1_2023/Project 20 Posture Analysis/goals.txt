@@ -2,6 +2,8 @@ Real-time pose estimation: The app should be able to perform pose estimation in 
 
 Posture analysis: The app should provide analysis of the cyclist's posture, including body position, pedaling technique, and aerodynamics.
 
+Posture correction program
+
 Performance metrics: The app should track and display performance metrics such as speed, cadence, and power output to help cyclists improve their training and performance.
 
 Personalization: The app should allow cyclists to customize their training program based on their individual needs and goals.

@@ -1,0 +1,14 @@
+import pandas as pd
+
+# Load the cyclist dataset into a pandas dataframe
+df = pd.read_csv('/content/Final.csv')
+
+# Fill in missing values (NaNs) with the mean value of that column
+df.fillna(df.mean(numeric_only=True), inplace=True)
+
+
+# Generalize the data by rounding the values to two decimal places
+df = df.round(2)
+
+# Save the cleaned dataset to a new CSV file
+df.to_csv('cleaned_cyclist_dataset.csv', index=False)
