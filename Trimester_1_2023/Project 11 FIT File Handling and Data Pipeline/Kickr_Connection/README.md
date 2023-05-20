@@ -1,4 +1,4 @@
-# BLE Cycling Power Data Collection Readme
+# BLE Cycling Power Data Collection 
 
 This Python script collects cycling power data from a Bluetooth Low Energy (BLE) device and saves it to a CSV file. The script uses the `asyncio` and `bleak` libraries for working with BLE devices, and the `pandas` library for data manipulation and storage.
 
