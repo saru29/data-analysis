@@ -297,7 +297,7 @@ The Cloud API uses the public Wahoo server and authorised user data. Because of 
 
 When you submit an application request to Wahoo, it will show up on your Developer Portal as pending approval. Be sure to include as much information as you can about your application so Wahoo can be confident in approving your use of the Cloud API.
 
-*Note: a `Sandbox` application request was made and granted - It took around a week to get approved. I explained why I needed access; as part of Deakin's [Capstone Program](https://https://www.deakin.edu.au/information-technology/student-capstone) / [Unit SIT378](https://www.deakin.edu.au/courses/unit?unit=SIT378<br>
+*Note: a `Sandbox` application request was made and granted - It took around a week to get approved. I explained why I needed access; as part of Deakin's [Capstone Program](https://https://www.deakin.edu.au/information-technology/student-capstone) / [Unit SIT378](https://www.deakin.edu.au/courses/unit?unit=SIT378)<br>
 As an additional work item - DevOps etc should submit an application for a `Production` app/access to the Cloud API*.
 
 ## Client Secret Security
