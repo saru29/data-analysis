@@ -313,4 +313,4 @@ Access tokens have a limited lifespan. Once the access token expires, you can us
 In the examples provided, we are connecting to a SQL Server database - This may change. Additionally, while inserting data into the database, we are not taking care of potential SQL injection issues and data type handling. This is simply an example to illustrate how you might store data. Always follow best practices when interacting with databases, such as using parameterized queries to prevent SQL injection and taking care of data types.
 <br><br>
 
-*Author: Mark Telley, 2022*
+*Author: Mark Telley, 2023*
