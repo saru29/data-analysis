@@ -1,6 +1,6 @@
 
 
-# Project 11 FIT File Handling and Data Pipeline
+# Project 11 FIT File Handling and Data Pipeline 2023 Trimester 1
 
 This repository contains the documentation and code for a project related to Wahoo fitness devices. The project involves working with the Wahoo Cloud API and establishing a connection with the Wahoo Kickr trainer to retrieve live data.
 
@@ -60,3 +60,5 @@ This project is licensed under the MIT License. Feel free to use, modify, and di
 - [Mark Telley](https://github.com/marktelley)
 
 If you would like to contribute to this project, please fork the repository and submit a pull request with your changes. Make sure to adhere to the project's coding conventions and guidelines.
+
+*Author: Mark Telley 2023*
