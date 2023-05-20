@@ -4,8 +4,6 @@ The Wahoo API is a RESTful API that allows developers to interact with Wahoo pro
 # Contents
 
 - [WAHOO API / FIT HANDLING](#wahoo-api--fit-handling)
-- [Contents](#contents)
-- [](#)
   - [Authentication](#authentication)
   - [User Details](#user-details)
   - [Select Workout](#select-workout)
