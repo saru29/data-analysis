@@ -1,78 +1,193 @@
-import tkinter as tk
-from tkinter import ttk
-from PIL import ImageTk, Image
-from ttkthemes import ThemedStyle
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
+from PyQt5.QtCore import Qt
 from Analyser import PoseAnalyzer
-from PostWO import PostWorkoutClass
+from Stretches import PoseComparison
+from UserData import UserVisualizer
 
+
+class WorkoutMode:
+    def __init__(self):
+        self.preworkout = False
+        self.postworkout = False
+        self.cycling=False
+
+    def set_preworkout(self):
+        self.preworkout = True
+        self.postworkout = False
+        self.cycling=False
+
+    def set_postworkout(self):
+        self.preworkout = False
+        self.postworkout = True
+        self.cycling=False
+    
+    def set_cycling(self): 
+        self.preworkout = False
+        self.postworkout = False
+        self.cycling=True
+
+        
+
+workout_mode = WorkoutMode()
 
 def switch_to_stretches():
-    # Code to switch to stretches mode
     print("Switched to stretches mode")
-    btn_stretches.configure(style="SelectedIconButton.TButton")  # Highlight the button for stretches
-    btn_cycling.configure(style="IconButton.TButton")  # Reset the button for cycling
-    btn_cooldowns.configure(style="IconButton.TButton")  # Reset the button for cooldowns
-    post_workout = PostWorkoutClass()
-    post_workout.perform_stretches()  # Assuming the main function is named run
+    btn_stretches.setStyleSheet(selected_button_style)
+    btn_cycling.setStyleSheet(button_style)
+    btn_delete_data.setStyleSheet(button_style)
+    btn_view_data.setStyleSheet(button_style)
+    btn_cooldowns.setStyleSheet(button_style)
+    workout_mode.set_preworkout()
+    
+    pose_comparison = PoseComparison('preworkout_stretch.mp4', threshold=20)
+    try:
+        pose_comparison.compare()
+    except Exception as e:
+        print(f"Exception occurred: {e}")
+        pass
+
 
 def switch_to_cycling():
-    # Code to switch to cycling mode
     print("Switched to cycling mode")
-    btn_stretches.configure(style="IconButton.TButton")  # Reset the button for stretches
-    btn_cycling.configure(style="SelectedIconButton.TButton")  # Highlight the button for cycling
-    btn_cooldowns.configure(style="IconButton.TButton")  # Reset the button for cooldowns
+    btn_stretches.setStyleSheet(button_style)
+    btn_cycling.setStyleSheet(selected_button_style)
+    btn_view_data.setStyleSheet(button_style)
+    btn_delete_data.setStyleSheet(button_style)
+    btn_cooldowns.setStyleSheet(button_style)
+    workout_mode.set_cycling()
     pose_analyzer = PoseAnalyzer()
-    
-    # Load the dataset from the .pkl file
     dataset_images = pose_analyzer.load_dataset('posturedataset.json')
-    
     dataset_joint_angles = pose_analyzer.calculate_dataset_angles(dataset_images)
     pose_analyzer.run(dataset_joint_angles)
+
 def switch_to_cooldowns():
-    # Code to switch to cooldowns mode
     print("Switched to cooldowns mode")
-    btn_stretches.configure(style="IconButton.TButton")  # Reset the button for stretches
-    btn_cycling.configure(style="IconButton.TButton")  # Reset the button for cycling
-    btn_cooldowns.configure(style="SelectedIconButton.TButton")  # Highlight the button for cooldowns
+    btn_stretches.setStyleSheet(button_style)
+    btn_cycling.setStyleSheet(button_style)
+    btn_delete_data.setStyleSheet(button_style)
+    btn_view_data.setStyleSheet(button_style)
+    btn_cooldowns.setStyleSheet(selected_button_style)
+    workout_mode.set_postworkout()
+    pose_comparison = PoseComparison('postworkout_stretch.mp4', threshold=20)
+    try:
+        pose_comparison.compare()
+    except Exception as e:
+        print(f"Exception occurred: {e}")
+        pass
 
-# Create the main application window
-window = tk.Tk()
-window.title("Workout Modes")
-window.config(bg="white")
+ 
+    
+def delete_data():
+    print("Deleting data...")
+    btn_delete_data.setStyleSheet(selected_button_style)
+    btn_view_data.setStyleSheet(button_style)
+    btn_stretches.setStyleSheet(button_style)
+    btn_cycling.setStyleSheet(button_style)
+    btn_cooldowns.setStyleSheet(button_style)   
+    try:
+        vis = UserVisualizer()  # User selects the file here
+        vis.delete_file()
+    except:
+        pass
+    
 
-# Create a themed style
-style = ThemedStyle(window)
-style.set_theme("arc")  # Set the theme to "arc" for rounded buttons
+def view_data():
+    print("Viewing data...")
+    btn_view_data.setStyleSheet(selected_button_style)
+    btn_delete_data.setStyleSheet(button_style)
+    btn_stretches.setStyleSheet(button_style)
+    btn_cycling.setStyleSheet(button_style)
+    btn_cooldowns.setStyleSheet(button_style)
+    try:
+        vis = UserVisualizer()  # User selects the file here
+        vis.plot_similarity_scores() 
+        vis.plot_aerodynamics_score()
+    except:
+        pass
+            
 
-# Define the custom button styles
-style.configure("IconButton.TButton",
-                background="white",
-                relief="flat",
-                borderwidth=0)
-style.configure("SelectedIconButton.TButton",
-                background="white",
-                relief="solid",
-                borderwidth=5,
-                bordercolor="red",
-                borderradius=8)  # Adjust the border radius as desired
+   
 
-# Create white icons for the buttons
-stretches_icon = ImageTk.PhotoImage(Image.open("warmup.png").resize((32, 32)).convert("RGBA"))
-cycling_icon = ImageTk.PhotoImage(Image.open("cycling.png").resize((32, 32)).convert("RGBA"))
-cooldowns_icon = ImageTk.PhotoImage(Image.open("cooldown.png").resize((32, 32)).convert("RGBA"))
 
-# Create buttons with icons for mode selection
-btn_stretches = ttk.Button(window, image=stretches_icon, command=switch_to_stretches, style="IconButton.TButton")
-btn_stretches.pack(pady=10)
+app = QApplication([])
 
-btn_cycling = ttk.Button(window, image=cycling_icon, command=switch_to_cycling, style="IconButton.TButton")
-btn_cycling.pack(pady=10)
+window = QWidget()
+window.setWindowTitle("Workout Modes")
+window.resize(800, 600)  # Set default window size (width x height)
 
-btn_cooldowns = ttk.Button(window, image=cooldowns_icon, command=switch_to_cooldowns, style="IconButton.TButton")
-btn_cooldowns.pack(pady=10)
+button_style = """
+    QPushButton {
+        
+        
+    background-color: white;
+    color: #eb677d;
+    border-style: outset;q
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #e7e7e7;
+    font: bold 14px;
+    min-width: 10em;
+    padding: 20px;
+ 
+    }
 
-# Initially highlight the button for stretches as the default mode
-btn_stretches.configure(style="SelectedIconButton.TButton")
+    QPushButton:hover {
+    background-color: white; 
+    color: #f44336; 
+    border: 2px solid #f44336;
+    
+    
+    }
+    QPushButton:pressed {
+    background-color: white;
+    color: black;
+    border: 3px solid #e7e7e7;
+    }
+"""
 
-# Run the main event loop
-window.mainloop()
+selected_button_style = """
+    QPushButton {
+    background-color: #f44336;
+    color: white;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #555555;
+    font: bold 14px;
+    min-width: 10em;
+    padding: 20px;
+    }
+"""
+
+layout = QVBoxLayout()
+
+btn_stretches = QPushButton('WARMUPS')
+btn_stretches.setStyleSheet(button_style)
+btn_stretches.clicked.connect(switch_to_stretches)
+layout.addWidget(btn_stretches)
+
+btn_cycling = QPushButton('CYCLING')
+btn_cycling.setStyleSheet(button_style)
+btn_cycling.clicked.connect(switch_to_cycling)
+layout.addWidget(btn_cycling)
+
+btn_cooldowns = QPushButton('COOLDOWNS')
+btn_cooldowns.setStyleSheet(button_style)
+btn_cooldowns.clicked.connect(switch_to_cooldowns)
+layout.addWidget(btn_cooldowns)
+
+btn_view_data = QPushButton('VIEW DATA')
+btn_view_data.setStyleSheet(button_style)
+btn_view_data.clicked.connect(view_data)
+layout.addWidget(btn_view_data)
+
+btn_delete_data = QPushButton('DELETE DATA')
+btn_delete_data.setStyleSheet(button_style)
+btn_delete_data.clicked.connect(delete_data)
+layout.addWidget(btn_delete_data)
+
+window.setLayout(layout)
+
+window.show()
+
+app.exec_()

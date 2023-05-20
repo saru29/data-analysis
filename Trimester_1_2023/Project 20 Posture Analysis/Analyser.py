@@ -7,35 +7,47 @@ import random
 
 class PoseAnalyzer:
 
+
     def __init__(self):
-        self.cap = cv2.VideoCapture(3)
+        self.cap = cv2.VideoCapture("Bike.mp4")
         self.mp_pose = mp.solutions.pose
         self.mp_drawing = mp.solutions.drawing_utils
         self.pose = self.mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5)
-       
+        self.workout_data = []
+        self.is_recording = False
+        self.record_start_time = None
+        self.record_limit = 60 * 10  # e.g., 10 minutes
+        
 
-    #Allow recording
-    #fourcc = cv.VideoWriter_fourcc(*'MJPG')
-    #out = cv.VideoWriter('output.avi', fourcc, 20.0, (640,  480))
-    workout_data = []
-    # Function to save workout data to a file
     
-    def record_session(self):
+    def start_recording(self):
+        self.is_recording = True
+        self.record_start_time = datetime.datetime.now()
         current_time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-        file_name = f"workout_{current_time}.avi"
-        fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-        cv2.VideoWriter(file_name, fourcc, 20.0, (640,  480))
+        self.record_file_name = f"Workouts\Videos\workout_{current_time}.mp4"
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        self.out = cv2.VideoWriter(self.record_file_name, fourcc, 15, (640, 480))
+
+
+    def stop_recording(self):
+        self.is_recording = False
+        self.record_start_time = None
+        self.out.release()
+        self.out = None
+        
+
+
        
             
         
-    def save_workout_data(self,workout_data):
+    def save_workout_data(self):
         current_time = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-        file_name = f"workout_{current_time}.json"
+        file_name = f"Workouts\Data\workout_{current_time}.json"
         with open(file_name, "w") as f:
-            json.dump(workout_data, f)
+            json.dump(self.workout_data, f)
             
     def load_dataset(self,file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r') as file:          
             dataset =json.load(file)
         return dataset
     
@@ -120,7 +132,7 @@ class PoseAnalyzer:
                             ]
 
                         elbow_angle =self.calculate_angle([landmarks[0].x,landmarks[0].y], [landmarks[1].x,landmarks[1].y], [landmarks[2].x,landmarks[2].y])
-                        
+                       
                         
                     else:
                 
@@ -227,7 +239,7 @@ class PoseAnalyzer:
                         knee_angle=random.uniform(130, 150)
                         
                     dataset_joint_angles.append((hip_angle, knee_angle, elbow_angle,wrist_angle))
-
+                    
                 else:
                        dataset_joint_angles.append((
                         random.uniform(55, 70),   # Default value for hip angle
@@ -268,11 +280,25 @@ class PoseAnalyzer:
         return dataset_array.tolist()
 
 
-    def analyze_posture(self,dataset_joint_angles,similarity_threshold=0.5):
+    def record_frame(self,frame):
+       if self.is_recording:
+        resized_frame = cv2.resize(frame, (640, 480))
+        
+        self.out.write(resized_frame)
+
+    def analyze_posture(self,dataset_joint_angles,similarity_threshold=0.01):
+      
         while self.cap.isOpened():
             ret, frame = self.cap.read()
             if not ret:
                 break
+            
+            hipState=False
+            kneeState=False
+            elbowState=False
+            wristState=False
+            pedalState=False
+            AeroState=False
             
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image.flags.writeable = False
@@ -284,18 +310,19 @@ class PoseAnalyzer:
             zscore_threshold = 3.0  # Adjust as needed
 
             joint_angles=self.replace_outliers(dataset_joint_angles,zscore_threshold)
-        
+                            #save the state of the cyclist
+ 
             try:
                 landmarks = results.pose_landmarks
                 
                 # Calculate the joint angles for the live video frame
-                shoulder = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
-                elbow = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_ELBOW.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_ELBOW.value].y]
-                wrist = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST.value].y]
-                hip = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HIP.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HIP.value].y]
-                knee = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_KNEE.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_KNEE.value].y]
-                heel = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HEEL.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HEEL.value].y]
-                knuckles = [landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_INDEX.value].x,landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_INDEX.value].y]
+                shoulder = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
+                elbow = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_ELBOW.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_ELBOW.value].y]
+                wrist = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST.value].y]
+                hip = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HIP.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HIP.value].y]
+                knee = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_KNEE.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_KNEE.value].y]
+                heel = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HEEL.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HEEL.value].y]
+                knuckles = [landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_INDEX.value].x,landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_INDEX.value].y]
                 
                 
                 hip_angle = self.calculate_angle(shoulder, hip, knee)
@@ -319,73 +346,179 @@ class PoseAnalyzer:
                     
                     
                     # Define the threshold range for each joint angle
-                    hip_angle_threshold = 40  # Adjust as needed
-                    knee_angle_threshold = 40  # Adjust as needed
-                    elbow_angle_threshold = 20  # Adjust as needed
-                    wrist_angle_threshold = 20  # Adjust as needed
+                    hip_angle_threshold = 80  # Adjust as needed
+                    knee_angle_threshold = 60  # Adjust as needed
+                    elbow_angle_threshold = 60  # Adjust as needed
+                    wrist_angle_threshold = 30  # Adjust as needed
 
                     # Calculate the similarity scores for each joint angle
                     hip_similarity_score = 1 - (hip_angle_diff / hip_angle_threshold)
                     knee_similarity_score = 1 - (knee_angle_diff / knee_angle_threshold)
                     elbow_similarity_score = 1 - (elbow_angle_diff / elbow_angle_threshold)
                     wrist_similarity_score = 1 - (wrist_angle_diff / wrist_angle_threshold)
-
+                    
+                    hipState = True if hip_similarity_score > similarity_threshold else False
+                    kneeState = True if knee_similarity_score > similarity_threshold else False
+                    elbowState = True if elbow_similarity_score > similarity_threshold else False
+                    wristState = True if wrist_similarity_score > similarity_threshold else False
                     # Determine the overall similarity score based on the average of individual scores
                     similarity_score = (hip_similarity_score + knee_similarity_score + elbow_similarity_score + wrist_similarity_score) / 4
                     similarity_score = max(similarity_score, 0)  # Ensure similarity score is not negative
-                    
-                    # Determine the color for the keypoints based on the similarity score
-                    keypoint_color = (0, 255, 0) if similarity_score > similarity_threshold else (0, 0, 255)
-                    # Draw circles on the keypoints
-                    cv2.circle(image, tuple(np.multiply(shoulder, [640, 480]).astype(int)), 5, keypoint_color, -1)
-                    cv2.circle(image, tuple(np.multiply(elbow, [640, 480]).astype(int)), 5, keypoint_color, -1)
-                    cv2.circle(image, tuple(np.multiply(wrist, [640, 480]).astype(int)), 5, keypoint_color, -1)
-                    cv2.circle(image, tuple(np.multiply(hip, [640, 480]).astype(int)), 5, keypoint_color, -1)
-                    cv2.circle(image, tuple(np.multiply(knee, [640, 480]).astype(int)), 5, keypoint_color, -1)
-                    
 
-                lefttoe=[landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value].x,landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value].y]
-                pedalpoint=[landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HEEL.value].x,landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value].y]    
+                    
+               
+                toe=[landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value].x,landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value].y]
+                pedalpoint=[landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HEEL.value].x,landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value].y]    
                 
                 #identify at what pedalling point we are
-                if lefttoe[0]>knee[0]:
+                if toe[0]>knee[0]:
                     downstroke=True
             
-                elif lefttoe[0]<knee[0]:
+                elif toe[0]<knee[0]:
                     downstroke=False
-                             
 
-                ballangle=self.get_non_absolute(heel,lefttoe,pedalpoint)                        
+         
+                ballangle=self.get_non_absolute(heel,toe,pedalpoint)                        
                 # Analyze pedalling technique
                 if not downstroke:
-                    if ballangle > 15 and ballangle < 25:
-                        cv2.circle(image, tuple(np.multiply(heel, [640, 480]).astype(int)), 5, (0, 255, 0), -1)
+                    if ballangle > 0 and ballangle < 45:
+                        pedalState=True
                     else:
-                        cv2.circle(image, tuple(np.multiply(heel, [640, 480]).astype(int)), 5, (0, 0, 255), -1)
-                else:
-                    if ballangle < 5 or ballangle > 15:
-                        cv2.circle(image, tuple(np.multiply(heel, [640, 480]).astype(int)), 5, (0, 255, 0), -1)
+                       pedalState=False
+                elif downstroke:
+                    if ballangle < 0 :
+                        pedalState=True
                     else:
-                        cv2.circle(image, tuple(np.multiply(heel, [640, 480]).astype(int)), 5, (0, 0, 255), -1)
+                       pedalState=False
 
+                nose = [landmarks.landmark[self.mp_pose.PoseLandmark.NOSE.value].x, landmarks.landmark[self.mp_pose.PoseLandmark.NOSE.value].y]
+                head_position = self.calculate_angle(shoulder, hip, nose)
+                body_angle = self.calculate_angle(hip, shoulder, [shoulder[0], hip[1]]) 
+                
                 # Analyze Aero
-                forearm_parallel = abs(wrist[1] - elbow[1]) <= 0.05  # Check if forearm is parallel to the ground
-                if forearm_parallel and 25 <= hip_angle <= 35:
-                    cv2.putText(image, "Aero Efficient", tuple(np.multiply(elbow, [640, 480]).astype(int)),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2, cv2.LINE_AA)
+                aerodynamics_score = (body_angle + elbow_angle + head_position + (180 - knee_angle)) / 4
+                if aerodynamics_score>50:
+                   AeroState=True
                 else:
-                    cv2.putText(image, "Not Aero Efficient", tuple(np.multiply(elbow, [640, 480]).astype(int)),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2, cv2.LINE_AA)                         
+                   AeroState=False
+                   
+                   
+                instructions = "Press 'r' to record this current session"
+                cv2.putText(image, instructions, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 0), 2)
+                    
+                    
+                
+                if self.is_recording:
+                    now = datetime.datetime.now()
+           
+                    elapsed_time = (now - self.record_start_time).total_seconds()
+                    elapsed_time_str = f"Recording time: {elapsed_time}s"
+                    cv2.putText(image, elapsed_time_str, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 0), 2)
+                    if elapsed_time > self.record_limit:
+                        self.stop_recording()
+
+                if self.is_recording:
+                    # Populate workout_data
+                    data_point = {
+                        'timestamp': now.strftime("%Y%m%d%H%M%S"),
+                        'hip_similarity_score': hip_similarity_score,
+                        'knee_similarity_score': knee_similarity_score,
+                        'elbow_similarity_score': elbow_similarity_score,
+                        'wrist_similarity_score': wrist_similarity_score,
+                        'hip_state': hipState,
+                        'knee_state': kneeState,
+                        'elbow_state': elbowState,
+                        'wrist_state': wristState,
+                        'downstroke': downstroke,
+                        'pedal_state': pedalState,
+                        'aero_state': AeroState,
+                        'aerodynamics_score': aerodynamics_score
+                    }
+                    self.workout_data.append(data_point)
+                                      
             except:
                 pass
 
-            self.mp_drawing.draw_landmarks(image,results.pose_landmarks,self.mp_pose.POSE_CONNECTIONS,
-                        self.mp_drawing.DrawingSpec(color=(127,79,209),thickness=2,circle_radius=2),
-                        self.mp_drawing.DrawingSpec(color=(213,161,54),thickness=2,circle_radius=2))
+
+
+            true_color = (0, 255, 0)  # Green color
+            false_color = (255, 0,0 )  # Red color
+            neutral=(255,255,255)
+            try:
+                if landmarks is not None: 
+                    # Convert the joint coordinates back to the original image resolution
+                    shoulderc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y * image.shape[0])]
+                    elbowc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_ELBOW.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_ELBOW.value].y * image.shape[0])]
+                    wristc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST.value].y * image.shape[0])]
+                    hipc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HIP.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HIP.value].y * image.shape[0])]
+                    kneec = [int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_KNEE.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_KNEE.value].y * image.shape[0])]
+                    heelc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HEEL.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_HEEL.value].y * image.shape[0])]
+                    rshoulderc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value].y * image.shape[0])]
+                    relbowc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_ELBOW.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_ELBOW.value].y * image.shape[0])]
+                    rwristc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST.value].y * image.shape[0])]
+                    rhipc = [int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HIP.value].x * image.shape[1]), int(landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_HIP.value].y * image.shape[0])]
+                  
+            except:
+                pass
+            # ...
+          
+               
+         
+          
+            # Draw circles at each joint
+          
+            if AeroState:
+             cv2.circle(image, tuple(shoulderc), 5, true_color, -1)
+             cv2.circle(image, tuple(rshoulderc), 5, true_color, -1)
+            else:
+             cv2.circle(image, tuple(shoulderc), 5, false_color, -1)
+             cv2.circle(image, tuple(rshoulderc), 5, false_color, -1)
+              
+            if elbowState:
+             cv2.circle(image, tuple(elbowc), 5, true_color, -1)
+             cv2.circle(image, tuple(relbowc), 5, true_color, -1)
+            else:
+             cv2.circle(image, tuple(elbowc), 5, false_color, -1)
+             cv2.circle(image, tuple(relbowc), 5, false_color, -1)
+             
+            if wristState:
+             cv2.circle(image, tuple(wristc), 5, true_color, -1)
+             cv2.circle(image, tuple(rwristc), 5, true_color, -1)
+            else:
+             cv2.circle(image, tuple(wristc), 5, false_color, -1)
+             cv2.circle(image, tuple(rwristc), 5, false_color, -1)
+
+            if hipState:
+             cv2.circle(image, tuple(hipc), 5, true_color, -1)
+             cv2.circle(image, tuple(rhipc), 5, true_color, -1)
+            else:
+             cv2.circle(image, tuple(hipc), 5, false_color, -1)
+             cv2.circle(image, tuple(rhipc), 5, false_color, -1)
+
+            if pedalState:
+             cv2.circle(image, tuple(heelc), 5, true_color, -1)
+            else:
+             cv2.circle(image, tuple(heelc), 5, false_color, -1)
+             
+            if kneeState:
+             cv2.circle(image, tuple(kneec), 5, true_color, -1)
+            else:
+             cv2.circle(image, tuple(kneec), 5, false_color, -1)
+             
+
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord('r'):
+                if self.is_recording:
+                    self.stop_recording()
+                    self.save_workout_data()
+                else:
+                    self.start_recording()
             
+
             output_image=image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            self.record_frame(output_image)
             cv2.imshow('Posture Analysis', output_image)
-            
+        
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
@@ -394,12 +527,12 @@ class PoseAnalyzer:
         cv2.destroyAllWindows()
 
     def run(self, dataset_joint_angles):
-        self.analyze_posture(dataset_joint_angles, similarity_threshold=0.5) 
+        self.analyze_posture(dataset_joint_angles, similarity_threshold=0.1) 
 
 if __name__ == '__main__':
     pose_analyzer = PoseAnalyzer()
     
-    # Load the dataset from the .pkl file
+    # Load the dataset from the json file
     dataset_images = pose_analyzer.load_dataset('posturedataset.json')
     
     dataset_joint_angles = pose_analyzer.calculate_dataset_angles(dataset_images)
