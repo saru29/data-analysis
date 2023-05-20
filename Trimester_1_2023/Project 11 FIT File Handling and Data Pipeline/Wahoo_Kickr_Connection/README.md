@@ -55,7 +55,8 @@ The collected data is stored in a pandas dataframe and saved to a CSV file named
 ## Images
 
 ![Alt text](https://github.com/redbackoperations/data-analysis/blob/main/Trimester_1_2023/Project%2011%20FIT%20File%20Handling%20and%20Data%20Pipeline/Wahoo_Kickr_Connection/Images/IMG_6064.JPG "Example image 1")
-![Alt text](https://github.com/redbackoperations/data-analysis/blob/main/Trimester_1_2023/Project%2011%20FIT%20File%20Handling%20and%20Data%20Pipeline/Wahoo_Kickr_Connection/Images/IMG_6068_1.JPG "Example image 2)
+
+![Alt text](https://github.com/redbackoperations/data-analysis/blob/main/Trimester_1_2023/Project%2011%20FIT%20File%20Handling%20and%20Data%20Pipeline/Wahoo_Kickr_Connection/Images/IMG_6068_1.JPG "Example image 1")
 
 ## Key Resource:
 
