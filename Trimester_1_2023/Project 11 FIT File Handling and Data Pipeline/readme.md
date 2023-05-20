@@ -26,14 +26,17 @@ The `Wahoo_Cloud_API` directory contains the core implementation of the project.
 
 ### Wahoo_Kickr_Connection
 
-The `Wahoo_Kickr_Connection` directory contains a Python script that establishes a connection with the Wahoo Kickr trainer. It enables the retrieval of live data from the trainer, such as speed, power, and cadence. This script can be used to monitor and analyze real-time performance during workouts.
+The `Kickr_Connection` directory contains a Python script that establishes a connection with the Wahoo Kickr trainer. It enables the retrieval of live data from the trainer, such as speed, power, and cadence. This script can be used to monitor and analyze real-time performance during workouts.
+
+### Google Cloud Platform Project & Bigquery Sandbox data environment
+The `GCP_Bigquery` directory contains infomation about the GCP Project `sit-23t1-fit-data-pipe-ee8896e` created and the Bigquery data warehouse. The Bigquery data warehouse under pins many of Data/AI's Trimester 2 projects. 
 
 ## Getting Started
 
 To get started with this project, please follow these steps:
 
 1. Clone the repository: `git clone https://github.com/yourusername/project-documentation.git`
-2. Navigate to the relevant directory for the component you wish to explore (`Documentation`, `Research`, `Wahoo_Cloud_API`, or `Wahoo_Kickr_Connection`).
+2. Navigate to the relevant directory for the component you wish to explore (`Documentation`, `Research`, `Wahoo_Cloud_API`, `GCP_Bigquery` or `Kickr_Connection`).
 3. Follow the instructions provided in each directory's respective README.md file to set up and run the code.
 
 ## Requirements
