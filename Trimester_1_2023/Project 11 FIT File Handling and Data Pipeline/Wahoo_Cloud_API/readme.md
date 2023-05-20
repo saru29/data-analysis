@@ -282,7 +282,7 @@ This code will connect to a SQL Server database, create a table called fit_data,
 # Other Items
 
 ## API Endpoints
-
+{Wahoo API Documentation](https://cloud-api.wahooligan.com/#introduction)<br><br>
 The Wahoo API has several endpoints that can be used to interact with the Wahoo system. Below is a brief description of the most relevant ones:
 
 - `/oauth/authorize`: This endpoint is used to authorize the client application and redirect the user to the login page. The client_id, redirect_uri, scope, and response_type are the required parameters.
