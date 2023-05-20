@@ -1,4 +1,6 @@
-# Overview
+
+
+# GCP PROJECT - DATE AND AI
 
 This The Google Cloud Project houses key resources and datasets which intially support sandbox data environment, crucial for various projects at Redback (DATA/AI). While Redback currently does not have a formal data warehouse (Project 18 aims to correc this) and there are challenges with the recording of bike/Wahoo Kickr data (IoT are working on this), the datasets provided here are designed to closely mirror the 'final' or actual datasets that we anticipate will be available in the future.
 
@@ -49,3 +51,5 @@ Access all workspace resources using the identifier `SIT-23t1-fit-data-pipe-ee88
 The `bucket_user_data_wahoo_fit` bucket contains original CSV fitness data such as `ExerciseData_combined_csv_user1.csv` and other larger CSV files. Note: User data is sensitive and should not be widely shared or redistributed. It's suggested to establish an `object lifecycle rule`, such as sunsetting data where it's deleted after a certain period.
 
 Google Cloud Storage buckets are used to initialize user datasets, as the size of the CSV files make it challenging to upload as a dataset directly into BigQuery.
+
+*Author: Mark Telley, 2023*
