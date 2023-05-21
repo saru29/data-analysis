@@ -2,7 +2,7 @@
 
 # GCP PROJECT - DATE AND AI
 
-This The Google Cloud Project houses key resources and datasets which intially support sandbox data environment, crucial for various projects at Redback (DATA/AI). While Redback currently does not have a formal data warehouse (Project 18 aims to correc this) and there are challenges with the recording of bike/Wahoo Kickr data (IoT are working on this), the datasets provided here are designed to closely mirror the 'final' or actual datasets that we anticipate will be available in the future.
+This The Google Cloud Project houses key resources and datasets which initially support sandbox data environment, crucial for various projects at Redback (DATA/AI). While Redback currently does not have a formal data warehouse (Project 18 aims to correct this) and there are challenges with the recording of bike/Wahoo Kickr data (IoT are working on this), the datasets provided here are designed to closely mirror the 'final' or actual datasets that we anticipate will be available in the future.
 
 These datasets, which originate from a variety of sources, are instrumental for enabling the DATA/AI team to commence working on key user-centric and business-centric features. They provide a tentative structure and understanding of how our eventual data infrastructure could be set up, thus paving the way for future developments.
 
