@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Power Usage</title>
+	<style>
+		body {
+			background-image: url("image.jpg");
+			background-size: cover;
+			height: 100vh;
+			overflow: hidden;
+		}
+		.power-box {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 10%;
+			height: 10%;
+			background-color: white;
+			padding: 1rem;
+			box-sizing: border-box;
+		}
+		.power-header {
+			font-size: 1.5rem;
+			font-weight: bold;
+			margin-bottom: 1rem;
+		}
+		.power-value {
+			font-size: 2rem;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="power-box">
+		<div class="power-header">Power (W)</div>
+		<div id="powerV" class="power-value">0</div>
+	</div>
+</body>
+</html>
