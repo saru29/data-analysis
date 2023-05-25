@@ -1,0 +1,522 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <CachedCosmeticName />
+          <File FileFormat="23" RecordLimit="">aka:MSI\prast|||select rw_fitness_data1.* 
+from rw_data.dbo.rw_fitness_data rw_fitness_data1
+where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and
+(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)</File>
+          <FormatSpecificOptions>
+            <SingleRowFetch>False</SingleRowFetch>
+            <ReadCentroids>False</ReadCentroids>
+            <TableStyle>Quoted</TableStyle>
+            <CacheData>False</CacheData>
+            <SessionReadOnly>True</SessionReadOnly>
+            <ReadUncommitted>False</ReadUncommitted>
+            <NoProgress>True</NoProgress>
+            <PostSQL />
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <PreSQL />
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>RW FItness Data</Name>
+          <DefaultAnnotationText>aka:MSI\prast
+Query=select rw_fitness_data1.*...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="timestamp" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="DateTime" />
+            <Field name="timestamp_AEST" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="date_AEST" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Date" />
+            <Field name="distance" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="enhanced_altitude" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="ascent" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="grade" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="calories" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="enhanced_speed" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="temperature" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="cadence" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="power" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gps_accuracy" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="sessionID" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="userID" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="age" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gender" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="weight" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="FTP" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=rp_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="210" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <CachedCosmeticName />
+          <File FileFormat="23" RecordLimit="">aka:MSI\prast|||select master_data.dbo.md_fitness_user.id,
+	master_data.dbo.md_fitness_user.userID 
+from master_data.dbo.md_fitness_user</File>
+          <FormatSpecificOptions>
+            <SingleRowFetch>False</SingleRowFetch>
+            <ReadCentroids>False</ReadCentroids>
+            <TableStyle>Quoted</TableStyle>
+            <CacheData>False</CacheData>
+            <SessionReadOnly>True</SessionReadOnly>
+            <ReadUncommitted>False</ReadUncommitted>
+            <NoProgress>True</NoProgress>
+            <PostSQL />
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <PreSQL />
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>aka:MSI\prast
+Query=select master_data.dbo.md_fi...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA;	master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="Int32" />
+            <Field name="userID" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA;	master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="258" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="userID" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="userID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Right_id" selected="True" rename="Right_id" input="Right_" />
+                <SelectField field="Right_userID" selected="True" rename="Right_userID" input="Right_" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Left">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="timestamp" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="DateTime" />
+            <Field name="timestamp_AEST" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="date_AEST" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Date" />
+            <Field name="distance" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="enhanced_altitude" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="ascent" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="grade" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="calories" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="enhanced_speed" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="temperature" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="cadence" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="power" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gps_accuracy" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="sessionID" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="userID" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="age" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gender" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="weight" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="FTP" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Join">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="timestamp" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="DateTime" />
+            <Field name="timestamp_AEST" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="date_AEST" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Date" />
+            <Field name="distance" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="enhanced_altitude" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="ascent" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="grade" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="calories" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="enhanced_speed" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="temperature" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="cadence" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="power" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gps_accuracy" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="sessionID" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="userID" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="age" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gender" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="weight" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="FTP" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="Right_id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA; master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="Int32" />
+            <Field name="Right_userID" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA; master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Right">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA; master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="Int32" />
+            <Field name="userID" size="30" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA; master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="426" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="id" selected="True" />
+            <SelectField field="timestamp" selected="True" />
+            <SelectField field="timestamp_AEST" selected="False" />
+            <SelectField field="date_AEST" selected="False" />
+            <SelectField field="distance" selected="True" />
+            <SelectField field="enhanced_altitude" selected="True" />
+            <SelectField field="ascent" selected="True" />
+            <SelectField field="grade" selected="True" />
+            <SelectField field="calories" selected="True" />
+            <SelectField field="enhanced_speed" selected="True" />
+            <SelectField field="heart_rate" selected="True" />
+            <SelectField field="temperature" selected="True" />
+            <SelectField field="cadence" selected="True" />
+            <SelectField field="power" selected="True" />
+            <SelectField field="gps_accuracy" selected="True" />
+            <SelectField field="sessionID" selected="True" />
+            <SelectField field="Right_id" selected="True" rename="fit_user_id" />
+            <SelectField field="userID" selected="False" />
+            <SelectField field="age" selected="False" />
+            <SelectField field="gender" selected="False" />
+            <SelectField field="weight" selected="False" />
+            <SelectField field="FTP" selected="True" />
+            <SelectField field="Right_userID" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="timestamp" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="DateTime" />
+            <Field name="distance" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="enhanced_altitude" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="ascent" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="grade" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="calories" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="enhanced_speed" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Double" />
+            <Field name="heart_rate" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="temperature" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="cadence" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="power" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="gps_accuracy" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+            <Field name="sessionID" size="60" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="V_String" />
+            <Field name="fit_user_id" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select master_data.dbo.md_fitness_user.id,&#xA; master_data.dbo.md_fitness_user.userID &#xA;from master_data.dbo.md_fitness_user" type="Int32" />
+            <Field name="FTP" source="File: odbc:DRIVER={ODBC Driver 17 for SQL Server};DATABASE=sw_data;SERVER=localhost;Trusted_Connection=yes|||select rw_fitness_data1.* &#xA;from rw_data.dbo.rw_fitness_data rw_fitness_data1&#xA;where timestamp between (select start_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1) and&#xA;(select end_date from master_data.dbo.md_dataload where table_name = 'sw_fitness_data' and active_flag = 1)" type="Int32" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="558" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="23">aka:MSI\prast|||sw_fitness_data</File>
+          <Passwords />
+          <CachedCosmeticName />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <TransactionMessages>False</TransactionMessages>
+            <Geometry>True</Geometry>
+            <Projection />
+            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+            <SpatialObjSize>8000</SpatialObjSize>
+            <OutputOption>Append</OutputOption>
+            <PostSQL>UPDATE master_data.dbo.md_dataload
+set active_flag = 0 where table_name = 'sw_fitness_data';
+
+Insert into master_data.dbo.md_dataload
+([table_name]
+           ,[start_date]
+           ,[end_date]
+           ,[active_flag]
+           ,[created_by])
+		   VALUES
+('sw_fitness_data'
+           , DATEADD(yy, DATEDIFF(yy, 0, GETDATE())-1, 0)
+           , DATEADD(yy, DATEDIFF(yy, 0, GETDATE()), -1)
+           ,1
+           ,'PSAPKOTA');</PostSQL>
+            <TransactionSize>10000</TransactionSize>
+            <TableStyle>Quoted</TableStyle>
+            <PreSQL>USE sw_data;
+IF OBJECT_ID(N'sw_data.dbo.sw_fitness_data', N'U') IS NULL
+CREATE TABLE sw_data.dbo.sw_fitness_data
+(
+id int not null primary key IDENTITY(1,1),
+timestamp datetime,
+	distance float,
+	enhanced_altitude float,
+	ascent int,
+	grade float,
+	calories int,
+	enhanced_speed float,
+	heart_rate int,
+	temperature int,
+	cadence int,
+	power int,
+	gps_accuracy int,
+	sessionID varchar(60),
+	fit_user_id int,
+	FTP int,
+)</PreSQL>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>aka:MSI\prast
+Query=sw_fitness_data</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+        <Position x="0" y="0" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+        <Position x="258" y="270" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UseFileInput value="False" />
+          <Name>Input7</Name>
+          <Abbrev />
+          <ShowFieldMap value="True" />
+          <Optional value="False" />
+          <TextInput>
+            <Configuration>
+              <NumRows value="1" />
+              <Fields>
+                <Field name="test" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>test</c>
+                </r>
+              </Data>
+            </Configuration>
+          </TextInput>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Input</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="True" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="test" size="2147483647" source="TextInput:" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+        <Position x="390" y="270" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Name>Output8</Name>
+          <Abbrev>3</Abbrev>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Output</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="3" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Join" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <Constants>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Input (7)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Output (8)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+    </Constants>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Staging_Fitness_Data</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="ecb319f7-3b3a-4b11-b226-2cfb3083901a" />
+      <Telemetry>
+        <PreviousWorkflowId value="3ce26885-01b6-4f1c-a022-2c08f94d88cd" />
+        <OriginWorkflowId value="61dc172c-eafd-409b-be20-463d26a63db3" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+    <RuntimeProperties>
+      <Actions />
+      <Questions>
+        <Question>
+          <Type>Tab</Type>
+          <Description>Questions</Description>
+          <Name>Tab (6)</Name>
+          <ToolId value="6" />
+          <Questions>
+            <Question>
+              <Type>MacroInput</Type>
+              <Description>Macro Input (7)</Description>
+              <Name>Macro Input (7)</Name>
+              <ToolId value="7" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description>Macro Output (8)</Description>
+              <Name>Macro Output (8)</Name>
+              <ToolId value="8" />
+            </Question>
+          </Questions>
+        </Question>
+      </Questions>
+      <ModuleType>Macro</ModuleType>
+      <MacroCustomHelp value="False" />
+      <MacroDynamicOutputFields value="False" />
+      <MacroImageStd value="39" />
+      <MacroInputs />
+      <MacroOutputs />
+      <Wiz_CustomHelp value="False" />
+      <Wiz_CustomGraphic value="False" />
+      <Wiz_ShowOutput value="True" />
+      <Wiz_OpenOutputTools>
+        <Tool ToolId="5" Selected="True" />
+        <Tool ToolId="7" Selected="True" />
+        <Tool ToolId="8" Selected="True" />
+      </Wiz_OpenOutputTools>
+      <Wiz_OutputMessage />
+      <Wiz_NoOutputFilesMessage />
+      <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+  </Properties>
+</AlteryxDocument>
